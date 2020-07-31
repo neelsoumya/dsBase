@@ -26,94 +26,22 @@
 #' @export
 retStrDS<-function(search.filter=NULL,env.to.search)
 {
-#########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-thr <- listDisclosureSettingsDS()                                       #
-#nfilter.tab<-as.numeric(thr$nfilter.tab)                               #
-#nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
-#nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
-nfilter.string<-as.numeric(thr$nfilter.string)                          #
-#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)               #
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
-#datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
-#########################################################################
+      #########################################################################
+      # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
+      thr <- listDisclosureSettingsDS()                                       #
+      #nfilter.tab<-as.numeric(thr$nfilter.tab)                               #
+      #nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
+      #nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
+      nfilter.string<-as.numeric(thr$nfilter.string)                          #
+      #nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)               #
+      #nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
+      #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
+      #########################################################################
 
-envir.text<-".GlobalEnv"
-
-cat('\n Hello World from server-side function retStrDS() in dsBase \n')
-temp_str <- 'Hello World from server-side dsBase::retStrDS()'
-outlist <- paste0(search.filter, temp_str)
-return(outlist)
-
-
-if(env.to.search==1L)
-{
-envir.2.search<-eval(parse(text=envir.text))
-}else{
-envir.2.search<-as.environment(env.to.search)
-}
-
-
-j<-0
-
-if(is.null(search.filter))
-{
-outobj<-ls(pos=env.to.search)
-
-outlist<-list(environment.searched=environmentName(envir.2.search),objects.found=outobj)
-
-cat('\n Hello World from server-side function lsDS() in dsBase \n')
-outlist <- 'Hello World from server-side dsBase::lsDS()'
-return(outlist)
-  
-}else{
-  search.filter.split<-unlist(strsplit(search.filter,split=""))
-  length.sf<-length(search.filter.split)
-  
-  search.filter.temp1<-NULL
-  print(length.sf)
-
-  if(length.sf>=5)
-  { 
-    while(j <= (length.sf-4))
-    {
-      j<-j+1
- 
-      print(j)     
-      add.to<-search.filter.split[j]
-      if(search.filter.split[j]=="_"&&search.filter.split[j+1]==":"&&search.filter.split[j+2]=="A"&&
-         search.filter.split[j+3]==":"&&search.filter.split[j+4]=="_")
-      {
-        add.to<-"*"
-        j<-j+4
-      }
-      search.filter.temp1<-c(search.filter.temp1,add.to)
-    }
-    
-    
-    while(j<length.sf)
-      {
-      j<-j+1
-      print(j)
-      add.to<-search.filter.split[j]
-      search.filter.temp1<-c(search.filter.temp1,add.to)
-      }
-    
-    search.filter.final<-paste(search.filter.temp1,collapse="")
-    
-    outobj<-ls(pos=env.to.search,pattern=utils::glob2rx(search.filter.final))
-  }else{
-
-   outobj<-ls(pos=env.to.search,pattern=utils::glob2rx(search.filter))
-   search.filter.final<-search.filter
-  }
-
-outlist<-list(environment.searched=environmentName(envir.2.search), objects.found=outobj,search.filter.final=search.filter.final)
-
-cat('\n Hello World from server-side function lsDS() in dsBase \n')
-outlist <- 'Hello World from server-side dsBase::lsDS()'
-return(outlist)
-}
+      cat('\n Hello World from server-side function retStrDS() in dsBase \n')
+      temp_str <- 'Hello World from server-side dsBase::retStrDS()'
+      outlist <- paste0(search.filter, temp_str)
+      return(outlist)
 }
 #AGGREGATE FUNCTION
 # retStrDS
