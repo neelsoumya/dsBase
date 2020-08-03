@@ -4,15 +4,11 @@
 \alias{retStrDS}
 \title{returns a string from a serverside environment}
 \usage{
-retStrDS(search.filter = NULL, env.to.search)
+retStrDS(search.filter = NULL)
 }
 \arguments{
 \item{search.filter}{either NULL or a character string (potentially including '*'
 wildcards) specifying required search criteria. This argument is
-fully specified by its corresponding argument in the clientside function.}
-
-\item{env.to.search}{integer (e.g. in a format such as '2' or '5L' format) specifying
-the position in the search path of the environment to be explored. This argument is
 fully specified by its corresponding argument in the clientside function.}
 }
 \value{
