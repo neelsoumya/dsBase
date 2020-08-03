@@ -9,13 +9,10 @@
 #' @param search.filter either NULL or a character string (potentially including '*'
 #' wildcards) specifying required search criteria. This argument is
 #' fully specified by its corresponding argument in the clientside function.
-#' @param env.to.search integer (e.g. in a format such as '2' or '5L' format) specifying
-#' the position in the search path of the environment to be explored. This argument is
-#' fully specified by its corresponding argument in the clientside function.
 #' @return a string containing a Hello World from server-side appended to whatever string was passed from client-side
 #' @author Soumya Banerjee (2020).
 #' @export
-retStrDS<-function(search.filter=NULL,env.to.search)
+retStrDS<-function(search.filter=NULL)
 {
       #########################################################################
       # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
