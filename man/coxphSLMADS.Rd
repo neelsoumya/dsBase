@@ -4,12 +4,14 @@
 \alias{coxphSLMADS}
 \title{returns a string from a serverside environment}
 \usage{
-coxphSLMADS(search.filter = NULL)
+coxphSLMADS(search.filter = NULL, dataName = NULL)
 }
 \arguments{
 \item{search.filter}{either NULL or a character string (potentially including '*'
 wildcards) specifying required search criteria. This argument is
 fully specified by its corresponding argument in the clientside function.}
+
+\item{dataName}{character string of name of data frame}
 }
 \value{
 a string containing a Hello World from server-side appended to whatever string was passed from client-side

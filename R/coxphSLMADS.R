@@ -9,10 +9,11 @@
 #' @param search.filter either NULL or a character string (potentially including '*'
 #' wildcards) specifying required search criteria. This argument is
 #' fully specified by its corresponding argument in the clientside function.
+#' @param dataName character string of name of data frame
 #' @return a string containing a Hello World from server-side appended to whatever string was passed from client-side
 #' @author Soumya Banerjee (2020).
 #' @export
-coxphSLMADS<-function(search.filter=NULL)
+coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
 {
       #########################################################################
       # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
