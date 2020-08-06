@@ -50,6 +50,8 @@ coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
       
       # formula2use <- formula
       # mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataTable)
+      cxph_serverside <- survival::coxph(formula = survival::Surv(time = survtime, event = cens) ~  female,
+                                         data = dataTable)
       
       cat('\n Hello World from server-side function coxphSLMADS() in dsBase \n')
       temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
