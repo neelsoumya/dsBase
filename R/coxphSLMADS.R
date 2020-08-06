@@ -60,7 +60,8 @@ coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
       cat('\n Hello World from server-side function coxphSLMADS() in dsBase \n')
       temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
       outlist <- paste0(search.filter, temp_str)
-      return(outlist)
+      #return(outlist)
+      return(summary(cxph_serverside))
 }
 #AGGREGATE FUNCTION
 # coxphSLMADS
