@@ -21,6 +21,7 @@ AggregateMethods:
     corTestDS,
     corDS,
     covDS,
+    coxphSLMADS,
     dataFrameSubsetDS1,
     densityGridDS,
     dimDS,
