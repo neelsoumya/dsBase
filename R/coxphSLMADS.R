@@ -27,8 +27,32 @@ coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
       #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
       #########################################################################
 
-      cat('\n Hello World from server-side function retStrDS() in dsBase \n')
-      temp_str <- 'Hello World from server-side dsBase::retStrDS()'
+      
+      
+      # get the value of the 'data' and 'weights' parameters provided as character on the client side
+      if(is.null(dataName)){
+         dataTable <- NULL 
+      }else{
+         dataTable <- eval(parse(text=dataName), envir = parent.frame())
+      }
+      
+      #    formulatext <- Reduce(paste, deparse(formula))
+      #    originalFormula <- formulatext
+      #   
+      # # Convert formula string into separate variable names split by |
+      #   formulatext <- gsub(" ", "", formulatext, fixed=TRUE)
+      #   formulatext <- gsub("~", "|", formulatext, fixed=TRUE)
+      #   formulatext <- gsub("+", "|", formulatext, fixed=TRUE)
+      #   formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
+      #   formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
+      # 
+      #    formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
+      
+      # formula2use <- formula
+      # mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataTable)
+      
+      cat('\n Hello World from server-side function coxphSLMADS() in dsBase \n')
+      temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
       outlist <- paste0(search.filter, temp_str)
       return(outlist)
 }
