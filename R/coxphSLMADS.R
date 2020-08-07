@@ -1,16 +1,15 @@
 #' 
-#' @title returns a string from a serverside environment
-#' @description returns a string from the server side environment afetr appending it to a string passed from the client side
-#' @details Serverside aggregate function {retStrDS} called by clientside function.
-#' {ds.retStr}.
-#' returns a string from the server side environment afetr appending it to a string passed from the client side. 
+#' @title Performs survival analysis using the Cox proportional hazards model at the serverside environment
+#' @description returns a summary of the Cox proportional hazards from the server side environment.
+#' @details Serverside aggregate function {coxphSLMADS} called by clientside function.
+#' {ds.coxphSLMA}.
+#' returns a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' This request is not disclosive as it only returns a string.
-#' For further details see help for {ds.retStr} function.
+#' For further details see help for {ds.coxphSLMA} function.
 #' @param search.filter either NULL or a character string (potentially including '*'
-#' wildcards) specifying required search criteria. This argument is
-#' fully specified by its corresponding argument in the clientside function.
+#' wildcards) specifying a formula.
 #' @param dataName character string of name of data frame
-#' @return a string containing a Hello World from server-side appended to whatever string was passed from client-side
+#' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee (2020).
 #' @export
 coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
@@ -26,8 +25,6 @@ coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
       #nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
       #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
       #########################################################################
-
-      
       
       # get the value of the 'data' and 'weights' parameters provided as character on the client side
       if(is.null(dataName)){
