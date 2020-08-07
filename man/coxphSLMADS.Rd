@@ -2,29 +2,28 @@
 % Please edit documentation in R/coxphSLMADS.R
 \name{coxphSLMADS}
 \alias{coxphSLMADS}
-\title{returns a string from a serverside environment}
+\title{Performs survival analysis using the Cox proportional hazards model at the serverside environment}
 \usage{
 coxphSLMADS(search.filter = NULL, dataName = NULL)
 }
 \arguments{
 \item{search.filter}{either NULL or a character string (potentially including '*'
-wildcards) specifying required search criteria. This argument is
-fully specified by its corresponding argument in the clientside function.}
+wildcards) specifying a formula.}
 
 \item{dataName}{character string of name of data frame}
 }
 \value{
-a string containing a Hello World from server-side appended to whatever string was passed from client-side
+a summary of the Cox proportional hazards from the server side environment from the server side environment.
 }
 \description{
-returns a string from the server side environment afetr appending it to a string passed from the client side
+returns a summary of the Cox proportional hazards from the server side environment.
 }
 \details{
-Serverside aggregate function {retStrDS} called by clientside function.
-{ds.retStr}.
-returns a string from the server side environment afetr appending it to a string passed from the client side. 
+Serverside aggregate function {coxphSLMADS} called by clientside function.
+{ds.coxphSLMA}.
+returns a summary of the Cox proportional hazards from the server side environment from the server side environment.
 This request is not disclosive as it only returns a string.
-For further details see help for {ds.retStr} function.
+For further details see help for {ds.coxphSLMA} function.
 }
 \author{
 Soumya Banerjee (2020).
