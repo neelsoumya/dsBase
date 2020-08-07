@@ -33,6 +33,23 @@ coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
          dataTable <- eval(parse(text=dataName), envir = parent.frame())
       }
       
+      # TODO:fix later
+      formula = search.filter
+      
+      # Put pipes back into formula
+      #formula = as.formula(paste(formula,collapse="|"))
+      formula <- Reduce(paste, deparse(formula))
+      formula <- gsub("xxx", "|", formula, fixed = TRUE)
+      formula <- gsub("yyy", "(", formula, fixed = TRUE)
+      formula <- gsub("zzz", ")", formula, fixed = TRUE)
+      formula <- gsub("ppp", "/", formula, fixed = TRUE)
+      formula <- gsub("qqq", ":", formula, fixed = TRUE)
+      formula <- gsub("rrr", ",", formula, fixed = TRUE)
+      formula <- stats::as.formula(formula)
+      
+      # TODO: fix later
+      search.filter = formula
+      
       #    formulatext <- Reduce(paste, deparse(formula))
       #    originalFormula <- formulatext
       #   
@@ -52,10 +69,12 @@ coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
       
       #cxph_serverside <- survival::coxph(formula = survival::Surv(time = SURVTIME, event = EVENT) ~  1,
       #                                   data = dataTable)
+      
       cxph_serverside <- survival::coxph(formula = survival::Surv(time = SURVTIME, event = EVENT) ~  D$female,
                                          data = dataTable)
       
-      
+      cxph_serverside <- survival::coxph(formula = formula,
+                                         data = dataTable)
       
       # cat('\n Hello World from server-side function coxphSLMADS() in dsBase \n')
       # temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
