@@ -73,8 +73,8 @@ coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
       #cxph_serverside <- survival::coxph(formula = survival::Surv(time = SURVTIME, event = EVENT) ~  1,
       #                                   data = dataTable)
       
-      cxph_serverside <- survival::coxph(formula = survival::Surv(time = SURVTIME, event = EVENT) ~  D$female,
-                                         data = dataTable)
+      #cxph_serverside <- survival::coxph(formula = survival::Surv(time = SURVTIME, event = EVENT) ~  D$female,
+      #                                   data = dataTable)
       
       cxph_serverside <- survival::coxph(formula = formula,
                                          data = dataTable)
