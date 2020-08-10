@@ -39,7 +39,7 @@ coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
       # Put pipes back into formula
       #formula = as.formula(paste(formula,collapse="|"))
       formula <- Reduce(paste, deparse(formula))
-      formula <- gsub("spppp", "survival::Surv(", formula, fixed = TRUE)
+      formula <- gsub("sssss", "survival::Surv(", formula, fixed = TRUE)
       formula <- gsub("lll", "=", formula, fixed = TRUE)
       formula <- gsub("xxx", "|", formula, fixed = TRUE)
       formula <- gsub("yyy", "(", formula, fixed = TRUE)
