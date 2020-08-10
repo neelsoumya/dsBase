@@ -4,10 +4,10 @@
 \alias{coxphSLMADS}
 \title{Performs survival analysis using the Cox proportional hazards model at the serverside environment}
 \usage{
-coxphSLMADS(search.filter = NULL, dataName = NULL)
+coxphSLMADS(formula = NULL, dataName = NULL)
 }
 \arguments{
-\item{search.filter}{either NULL or a character string (potentially including '*'
+\item{formula}{either NULL or a character string (potentially including '*'
 wildcards) specifying a formula.}
 
 \item{dataName}{character string of name of data frame}

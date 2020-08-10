@@ -6,13 +6,13 @@
 #' returns a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' This request is not disclosive as it only returns a string.
 #' For further details see help for {ds.coxphSLMA} function.
-#' @param search.filter either NULL or a character string (potentially including '*'
+#' @param formula either NULL or a character string (potentially including '*'
 #' wildcards) specifying a formula.
 #' @param dataName character string of name of data frame
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee (2020).
 #' @export
-coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
+coxphSLMADS<-function(formula=NULL, dataName=NULL)
 {
       #########################################################################
       # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
@@ -35,8 +35,6 @@ coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
          dataTable <- eval(parse(text=dataName), envir = parent.frame())
       }
       
-      # TODO:fix later
-      formula = search.filter
       
       # Put pipes back into formula
       #formula = as.formula(paste(formula,collapse="|"))
@@ -52,8 +50,6 @@ coxphSLMADS<-function(search.filter=NULL, dataName=NULL)
 
       formula <- stats::as.formula(formula)
       
-      # TODO: fix later
-      search.filter = formula
       
       #    formulatext <- Reduce(paste, deparse(formula))
       #    originalFormula <- formulatext
