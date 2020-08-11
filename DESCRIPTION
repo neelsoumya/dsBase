@@ -118,7 +118,7 @@ AssignMethods:
     seqDS,
     subsetByClassDS,
     subsetDS,
-    survDS,
+    SurvDS,
     tableDS.assign,
     tapplyDS.assign,
     unListDS,
