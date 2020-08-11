@@ -30,7 +30,7 @@ SurvDS<-function(formula=NULL, dataName=NULL)
       
     
       
-      #surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
+      # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
       
       surv_object <- "HellofromSurvDS"
       
