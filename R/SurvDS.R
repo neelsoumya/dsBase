@@ -29,8 +29,8 @@ SurvDS<-function(formula=NULL, dataName=NULL)
       #########################################################################
       
     
-      time  = 'SURVTIME'
-      event = 'EVENT'
+      time  = formula  # 'SURVTIME'
+      event = dataName # 'EVENT'
       # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
       str_command = paste0('survival::Surv(time = ', time)
