@@ -32,7 +32,7 @@ SurvDS<-function(formula=NULL, dataName=NULL)
       
       #surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
       
-      surv_object <- "Hello from SurvDS"
+      surv_object <- "HellofromSurvDS"
       
       # cat('\n Hello World from server-side function coxphSLMADS() in dsBase \n')
       # temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
