@@ -29,9 +29,19 @@ SurvDS<-function(formula=NULL, dataName=NULL)
       #########################################################################
       
     
-      
+      time  = 'SURVTIME'
+      event = 'EVENT'
+      # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
-      surv_object <- eval(parse(text='survival::Surv(time = SURVTIME, event = EVENT)'), envir = parent.frame())
+      str_command = paste0('survival::Surv(time = ', time)
+      str_command = paste0(str_command, ', event = ') 
+      str_command = paste0(str_command, event)
+      str_command = paste0(str_command, ')')
+      
+      # evaluate this
+      surv_object <- eval(parse(text=str_command), envir = parent.frame())
+      
+      # surv_object <- eval(parse(text='survival::Surv(time = SURVTIME, event = EVENT)'), envir = parent.frame())
       
       # surv_object <- "HellofromSurvDS"
       
