@@ -6,13 +6,14 @@
 #' returns a Survival object for use in Cox proportional hazards from the server side environment from the server side environment.
 #' This request is not disclosive as it only returns a string.
 #' For further details see help for {ds.Surv} function.
-#' @param formula either NULL or a character string (potentially including '*'
-#' wildcards) specifying a formula.
-#' @param dataName character string of name of data frame
+#' @param time name of time parameter to be passed to Surv(). 
+#'      Should be a character string.
+#' @param event name of event parameter to be passed to Surv()
+#'      Should be character string.
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee (2020).
 #' @export
-SurvDS<-function(formula=NULL, dataName=NULL)
+SurvDS<-function(time=NULL, event=NULL)
 {
       #########################################################################
       # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
@@ -29,8 +30,8 @@ SurvDS<-function(formula=NULL, dataName=NULL)
       #########################################################################
       
     
-      time  = formula  # 'SURVTIME'
-      event = dataName # 'EVENT'
+      # time  = time  # 'SURVTIME'
+      # event = event # 'EVENT'
       # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
       str_command = paste0('survival::Surv(time = ', time)

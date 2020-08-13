@@ -4,13 +4,14 @@
 \alias{SurvDS}
 \title{Creates a survival object for survival analysis using the Cox proportional hazards model at the serverside environment}
 \usage{
-SurvDS(formula = NULL, dataName = NULL)
+SurvDS(time = NULL, event = NULL)
 }
 \arguments{
-\item{formula}{either NULL or a character string (potentially including '*'
-wildcards) specifying a formula.}
+\item{time}{name of time parameter to be passed to Surv(). 
+Should be a character string.}
 
-\item{dataName}{character string of name of data frame}
+\item{event}{name of event parameter to be passed to Surv()
+Should be character string.}
 }
 \value{
 a summary of the Cox proportional hazards from the server side environment from the server side environment.
