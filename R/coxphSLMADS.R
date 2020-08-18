@@ -94,7 +94,7 @@ coxphSLMADS<-function(formula=NULL, dataName=NULL)
             #                 "leading to a possible risk of disclosure - please simplify model. With ",
             #                 num.p," parameters and nfilter.glm = ",round(nfilter.glm,4)," you need ",
             #                 round((num.p/nfilter.glm),0)," observations")
-            return("Error")
+            return("ERROR: Model is oversaturated (too many model parameters relative to sample size)")
       }
       
       # cat('\n Hello World from server-side function coxphSLMADS() in dsBase \n')
