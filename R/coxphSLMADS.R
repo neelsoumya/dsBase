@@ -14,6 +14,9 @@
 #' @export
 coxphSLMADS<-function(formula=NULL, dataName=NULL)
 {
+      
+      errorMessage <- "No errors"
+      
       #########################################################################
       # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
       thr <- listDisclosureSettingsDS()                                       #
@@ -76,6 +79,23 @@ coxphSLMADS<-function(formula=NULL, dataName=NULL)
       
       cxph_serverside <- survival::coxph(formula = formula,
                                          data = dataTable)
+      
+      ###########################
+      # disclosure checks
+      ###########################
+      # check if model oversaturated
+      num_parameters  <- length(cxph_serverside$coefficients)
+      num_data_points <- cxph_serverside$n
+      
+      if(num_parameters > (nfilter.glm * num_data_points) )
+      {
+            #glm.saturation.invalid<-1
+            #errorMessage.gos<-paste0("ERROR: Model is oversaturated (too many model parameters relative to sample size)",
+            #                 "leading to a possible risk of disclosure - please simplify model. With ",
+            #                 num.p," parameters and nfilter.glm = ",round(nfilter.glm,4)," you need ",
+            #                 round((num.p/nfilter.glm),0)," observations")
+            return("Error")
+      }
       
       # cat('\n Hello World from server-side function coxphSLMADS() in dsBase \n')
       # temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
