@@ -20,14 +20,21 @@ isValidDS <- function(obj) {
   #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
   
-  if(class(obj) == "character" | class(obj) == "integer" | class(obj) == "logical" | class(obj) == "numeric") {
-    if(length(obj) > 0 & length(obj)  < nfilter.tab) {
+  if(class(obj) == "character" | class(obj) == "integer" | class(obj) == "logical" | class(obj) == "numeric" | class(obj) == "Surv")
+  {
+    if(length(obj) > 0 & length(obj) < nfilter.tab)
+    {
       return(FALSE)
-    } else {
+    } 
+    else
+    {
       return(TRUE)
     }
-  }else{
-    if(class(obj) == "factor"){
+  }
+  else
+  {
+    if(class(obj) == "factor")
+    {
       tt <- tabulate(obj)
       xx <- which(tt > 0 & tt < nfilter.tab)
       if(length(xx) > 0) {
@@ -35,7 +42,9 @@ isValidDS <- function(obj) {
       } else {
         return(TRUE)
       }
-    }else{
+    }
+    else
+    {
       if(class(obj) == "data.frame" | class(obj) == "matrix"){
         if(dim(obj)[1] > 0 & dim(obj)[1] < nfilter.tab){
           return(FALSE)
