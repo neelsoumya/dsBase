@@ -2,7 +2,7 @@
 % Please edit documentation in R/coxphSLMADS.R
 \name{coxphSLMADS}
 \alias{coxphSLMADS}
-\title{Performs survival analysis using the Cox proportional hazards model at the serverside environment}
+\title{Performs survival analysis using the Cox proportional hazards model at the serverside environment.}
 \usage{
 coxphSLMADS(formula = NULL, dataName = NULL)
 }
