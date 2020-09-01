@@ -1,5 +1,5 @@
 #' 
-#' @title Performs survival analysis using the Cox proportional hazards model at the serverside environment
+#' @title Performs survival analysis using the Cox proportional hazards model at the serverside environment.
 #' @description returns a summary of the Cox proportional hazards from the server side environment.
 #' @details Serverside aggregate function {coxphSLMADS} called by clientside function.
 #' {ds.coxphSLMA}.
