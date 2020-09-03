@@ -30,8 +30,6 @@ SurvDS<-function(time=NULL, event=NULL)
       #########################################################################
       
     
-      # time  = time  # 'SURVTIME'
-      # event = event # 'EVENT'
       # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
       str_command = paste0('survival::Surv(time = ', time)
@@ -50,6 +48,7 @@ SurvDS<-function(time=NULL, event=NULL)
       # temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
       # outlist <- paste0(search.filter, temp_str)
       # return(outlist)
+      
       return(surv_object)
 }
 #ASSIGN FUNCTION
