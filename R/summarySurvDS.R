@@ -39,9 +39,12 @@ summarySurvDS<-function(formula=NULL, dataName=NULL)
       #}
       
       surv_object <- formula
-      summary_surv_object <- dsBase::quantileMeanDS(xvect = surv_object[,1])
+      summary_surv_object_time   <- dsBase::quantileMeanDS(xvect = surv_object[,1])
+      summary_surv_object_status <- dsBase::quantileMeanDS(xvect = surv_object[,2])
       
-      return(summary_surv_object)
+      return_object <- list("time"=summary_surv_object_time, "event"=summary_surv_object_status)
+      
+      return(return_object)
       
       #cxph_serverside <- survival::coxph(formula = formula,
       #                                   data = dataTable)
