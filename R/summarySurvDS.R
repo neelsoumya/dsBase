@@ -12,7 +12,7 @@
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee (2020).
 #' @export
-coxphSLMADS<-function(formula=NULL, dataName=NULL)
+summarySurvDS<-function(formula=NULL, dataName=NULL)
 {
       
       errorMessage <- "No errors"
