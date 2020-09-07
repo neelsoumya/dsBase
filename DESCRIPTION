@@ -54,6 +54,7 @@ AggregateMethods:
     scatterPlotDS,
     scoreVectDS,
     setSeedDS,
+    summarySurvDS,
     table1DDS,
     table2DDS,
     tableDS,
