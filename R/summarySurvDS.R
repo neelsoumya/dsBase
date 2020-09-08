@@ -3,7 +3,8 @@
 #' @description returns a summary of the survival Surv() object from the server side environment.
 #' @details Serverside aggregate function {coxphSLMADS} called by clientside function 
 #' {ds.summary}.
-#' returns a summary of the survival Surv() object.
+#' returns a list which is summary of the survival Surv() object. The list has the summary of the time
+#'   and event parameter in the survival object.
 #' This request is not disclosive.
 #' For further details see help for {ds.summary} function.
 #' @param object name of server-side survival object.
