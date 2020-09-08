@@ -8,7 +8,7 @@
 #' This request is not disclosive.
 #' For further details see help for {ds.summary} function.
 #' @param object name of server-side survival object.
-#' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
+#' @return a list which is a summary of server-side survival model.
 #' @author Soumya Banerjee (2020).
 #' @export
 summarySurvDS<-function(object=NULL)
