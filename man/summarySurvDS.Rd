@@ -4,24 +4,22 @@
 \alias{summarySurvDS}
 \title{Returns summary of survival object.}
 \usage{
-summarySurvDS(formula = NULL, dataName = NULL)
+summarySurvDS(object = NULL)
 }
 \arguments{
-\item{formula}{either NULL or a character string (potentially including '*'
-wildcards) specifying a formula.}
-
-\item{dataName}{character string of name of data frame}
+\item{object}{name of server-side survival object.}
 }
 \value{
-a summary of the Cox proportional hazards from the server side environment from the server side environment.
+a list which is a summary of server-side survival model.
 }
 \description{
 returns a summary of the survival Surv() object from the server side environment.
 }
 \details{
-Serverside aggregate function {coxphSLMADS} called by clientside function.
+Serverside aggregate function {coxphSLMADS} called by clientside function 
 {ds.summary}.
-returns a summary of the survival Surv() object.
+returns a list which is summary of the survival Surv() object. The list has the summary of the time
+  and event parameter in the survival object.
 This request is not disclosive.
 For further details see help for {ds.summary} function.
 }
