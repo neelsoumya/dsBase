@@ -1,18 +1,16 @@
 #' 
 #' @title Returns summary of survival object.
 #' @description returns a summary of the survival Surv() object from the server side environment.
-#' @details Serverside aggregate function {coxphSLMADS} called by clientside function.
+#' @details Serverside aggregate function {coxphSLMADS} called by clientside function 
 #' {ds.summary}.
 #' returns a summary of the survival Surv() object.
 #' This request is not disclosive.
 #' For further details see help for {ds.summary} function.
-#' @param formula either NULL or a character string (potentially including '*'
-#' wildcards) specifying a formula.
-#' @param dataName character string of name of data frame
+#' @param object name of server-side survival object.
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee (2020).
 #' @export
-summarySurvDS<-function(formula=NULL, dataName=NULL)
+summarySurvDS<-function(object=NULL)
 {
       
       errorMessage <- "No errors"
@@ -38,7 +36,7 @@ summarySurvDS<-function(formula=NULL, dataName=NULL)
       #   dataTable <- eval(parse(text=dataName), envir = parent.frame())
       #}
       
-      surv_object <- formula
+      surv_object <- object
       summary_surv_object_time   <- dsBase::quantileMeanDS(xvect = surv_object[,1])
       summary_surv_object_status <- dsBase::quantileMeanDS(xvect = surv_object[,2])
       
@@ -73,4 +71,4 @@ summarySurvDS<-function(formula=NULL, dataName=NULL)
       #return(summary(cxph_serverside))
 }
 #AGGREGATE FUNCTION
-# coxphSLMADS
+# summarySurvDS
