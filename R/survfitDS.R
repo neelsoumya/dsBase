@@ -1,20 +1,20 @@
 #' 
 #' @title Creates a survival survfit object for survival analysis at the serverside environment. 
 #'   This is to be used for eventually plotting survival models.
+#'   A survival curve is based on a tabulation of the number at risk
+#'   and number of events at each unique death time.
 #' @description creates a survfit survival object in the server side environment.
 #' @details Serverside assign function {survfitDS} called by clientside function.
 #' {ds.survfit}.
 #' creates a survfit survival object in the server side environment
 #' This request is not disclosive.
 #' For further details see help for {ds.survfit} function.
-#' @param time name of time parameter to be passed to Surv(). 
+#' @param formula this is the formula to be passed to survfit(). 
 #'      Should be a character string.
-#' @param event name of event parameter to be passed to Surv()
-#'      Should be character string.
 #' @return creates a survfit survival object in the server side environment.
 #' @author Soumya Banerjee (2020).
 #' @export
-survfitDS<-function(time=NULL, event=NULL)
+survfitDS<-function(formula=NULL)
 {
       #########################################################################
       # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
@@ -45,6 +45,8 @@ survfitDS<-function(time=NULL, event=NULL)
       # evaluate this
       surv_object <- eval(parse(text=str_command), envir = parent.frame())
       
+      # TODO: convert special characters in formula here
+      # TODO: use formula here
       survfit_object <- survival::survfit(surv_object ~ 1)
       
       # surv_object <- eval(parse(text='survival::Surv(time = SURVTIME, event = EVENT)'), envir = parent.frame())
