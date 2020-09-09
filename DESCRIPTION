@@ -120,6 +120,7 @@ AssignMethods:
     subsetByClassDS,
     subsetDS,
     SurvDS,
+    survfitDS,
     tableDS.assign,
     tapplyDS.assign,
     unListDS,
