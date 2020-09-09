@@ -37,16 +37,10 @@ summarySurvDS<-function(object=NULL)
       #   dataTable <- eval(parse(text=dataName), envir = parent.frame())
       #}
       
-      surv_object <- object
-      summary_surv_object_time   <- dsBase::quantileMeanDS(xvect = surv_object[,1])
-      summary_surv_object_status <- dsBase::quantileMeanDS(xvect = surv_object[,2])
-      
-      return_object <- list("time"=summary_surv_object_time, "event"=summary_surv_object_status)
-      
-      return(return_object)
-      
-      #cxph_serverside <- survival::coxph(formula = formula,
-      #                                   data = dataTable)
+      if (is.null(object))
+      {
+            stop("The input object must be a survival::Surv object", call.=FALSE)
+      }
       
       ###########################
       # disclosure checks
@@ -64,12 +58,17 @@ summarySurvDS<-function(object=NULL)
       #      #                 round((num.p/nfilter.glm),0)," observations")
       #      return("ERROR: Model is oversaturated (too many model parameters relative to sample size)")
       #}
+
       
-      # cat('\n Hello World from server-side function coxphSLMADS() in dsBase \n')
-      # temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
-      # outlist <- paste0(search.filter, temp_str)
-      # return(outlist)
-      #return(summary(cxph_serverside))
+      surv_object <- object
+      summary_surv_object_time   <- dsBase::quantileMeanDS(xvect = surv_object[,1])
+      summary_surv_object_status <- dsBase::quantileMeanDS(xvect = surv_object[,2])
+      
+      return_object <- list("time"=summary_surv_object_time, "event"=summary_surv_object_status)
+      
+      return(return_object)
+      
+      
 }
 #AGGREGATE FUNCTION
 # summarySurvDS
