@@ -3,16 +3,15 @@
 \name{survfitDS}
 \alias{survfitDS}
 \title{Creates a survival survfit object for survival analysis at the serverside environment. 
-  This is to be used for eventually plotting survival models.}
+  This is to be used for eventually plotting survival models.
+  A survival curve is based on a tabulation of the number at risk
+  and number of events at each unique death time.}
 \usage{
-survfitDS(time = NULL, event = NULL)
+survfitDS(formula = NULL)
 }
 \arguments{
-\item{time}{name of time parameter to be passed to Surv(). 
+\item{formula}{this is the formula to be passed to survfit(). 
 Should be a character string.}
-
-\item{event}{name of event parameter to be passed to Surv()
-Should be character string.}
 }
 \value{
 creates a survfit survival object in the server side environment.
