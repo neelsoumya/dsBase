@@ -32,6 +32,8 @@ SurvDS<-function(time=NULL, event=NULL)
     
       # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
+      stop  = 'STOPTIME'
+      start = 'STARTTIME'
       str_command = paste0('survival::Surv(time = ', time)
       str_command = paste0(str_command, ', event = ') 
       str_command = paste0(str_command, event)
