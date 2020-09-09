@@ -1,17 +1,17 @@
 #' 
 #' @title Creates a survival survfit object for survival analysis at the serverside environment. 
 #'   This is to be used for eventually plotting survival models.
-#' @description returns a summary of the Cox proportional hazards from the server side environment.
-#' @details Serverside assign function {SurvDS} called by clientside function.
-#' {ds.Surv}.
-#' returns a Survival object for use in Cox proportional hazards from the server side environment from the server side environment.
-#' This request is not disclosive as it only returns a string.
-#' For further details see help for {ds.Surv} function.
+#' @description creates a survfit survival object in the server side environment.
+#' @details Serverside assign function {survfitDS} called by clientside function.
+#' {ds.survfit}.
+#' creates a survfit survival object in the server side environment
+#' This request is not disclosive.
+#' For further details see help for {ds.survfit} function.
 #' @param time name of time parameter to be passed to Surv(). 
 #'      Should be a character string.
 #' @param event name of event parameter to be passed to Surv()
 #'      Should be character string.
-#' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
+#' @return creates a survfit survival object in the server side environment.
 #' @author Soumya Banerjee (2020).
 #' @export
 survfitDS<-function(time=NULL, event=NULL)
@@ -56,7 +56,7 @@ survfitDS<-function(time=NULL, event=NULL)
       # outlist <- paste0(search.filter, temp_str)
       # return(outlist)
       
-      return(surv_object)
+      return(survfit_object)
 }
 #ASSIGN FUNCTION
 # survfitDS
