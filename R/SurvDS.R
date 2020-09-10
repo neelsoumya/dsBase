@@ -6,11 +6,13 @@
 #' returns a Survival object for use in Cox proportional hazards from the server side environment from the server side environment.
 #' This request is not disclosive as it only returns a string.
 #' For further details see help for {ds.Surv} function.
-#' @param time name of time parameter to be passed to Surv(). 
+#' @param start name of start time parameter to be passed to Surv(). 
+#'      Should be a character string.
+#' @param stop name of stop time parameter to be passed to Surv(). 
 #'      Should be a character string.
 #' @param event name of event parameter to be passed to Surv()
 #'      Should be character string.
-#' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
+#' @return a survival::Surv() object from the server side environment.
 #' @author Soumya Banerjee (2020).
 #' @export
 SurvDS<-function(start=NULL, stop=NULL, event=NULL)
