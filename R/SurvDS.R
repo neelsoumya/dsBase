@@ -13,7 +13,7 @@
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee (2020).
 #' @export
-SurvDS<-function(time=NULL, event=NULL)
+SurvDS<-function(start=NULL, stop=NULL, event=NULL)
 {
       #########################################################################
       # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
