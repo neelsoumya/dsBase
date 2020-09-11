@@ -48,6 +48,8 @@ survfitDS<-function(formula=NULL)
       # TODO: use formula here and remove later
       formula = "surv_object ~ 1"
       
+      formula = stats::as.formula(formula)
+      
       if (is.null(formula))
       {
             stop("The input must have a non-empty formula to be used in survival::survfit()", call.=FALSE)
