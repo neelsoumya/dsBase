@@ -12,7 +12,7 @@
 #' @param formula this is the formula to be passed to survfit(). 
 #'      Should be a character string.
 #' @return creates a survfit survival object in the server side environment.
-#' @author Soumya Banerjee (2020).
+#' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
 survfitDS<-function(formula=NULL)
 {
