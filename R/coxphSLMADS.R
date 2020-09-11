@@ -32,9 +32,12 @@ coxphSLMADS<-function(formula=NULL, dataName=NULL)
       #########################################################################
       
       # get the value of the 'data' and 'weights' parameters provided as character on the client side
-      if(is.null(dataName)){
+      if(is.null(dataName))
+      {
          dataTable <- NULL 
-      }else{
+      }
+      else
+      {
          dataTable <- eval(parse(text=dataName), envir = parent.frame())
       }
       
