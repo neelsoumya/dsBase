@@ -27,5 +27,5 @@ This request is not disclosive.
 For further details see help for {ds.survfit} function.
 }
 \author{
-Soumya Banerjee (2020).
+Soumya Banerjee and Tom Bishop (2020).
 }
