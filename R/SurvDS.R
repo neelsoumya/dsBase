@@ -13,7 +13,7 @@
 #' @param event name of event parameter to be passed to Surv()
 #'      Should be character string.
 #' @return a survival::Surv() object from the server side environment.
-#' @author Soumya Banerjee (2020).
+#' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
 SurvDS<-function(start=NULL, stop=NULL, event=NULL)
 {
