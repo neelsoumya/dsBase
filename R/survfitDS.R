@@ -33,21 +33,21 @@ survfitDS<-function(formula=NULL)
     
       # construct a call to Surv function with these parameters
       
-      time  = "SURVTIME"
-      event = "EVENT"
-      
-      # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
-      str_command = paste0('survival::Surv(time = ', time)
-      str_command = paste0(str_command, ', event = ') 
-      str_command = paste0(str_command, event)
-      str_command = paste0(str_command, ')')
+      #time  = "SURVTIME"
+      #event = "EVENT"
+      ## surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
+      #str_command = paste0('survival::Surv(time = ', time)
+      #str_command = paste0(str_command, ', event = ') 
+      #str_command = paste0(str_command, event)
+      #str_command = paste0(str_command, ')')
       
       # evaluate this
-      surv_object <- eval(parse(text=str_command), envir = parent.frame())
+      #surv_object <- eval(parse(text=str_command), envir = parent.frame())
       
       # TODO: convert special characters in formula here
-      # TODO: use formula here
-      survfit_object <- survival::survfit(surv_object ~ 1)
+      # TODO: use formula here and remove later
+      formula = "surv_object ~ 1"
+      survfit_object <- survival::survfit(formula)
       
       # surv_object <- eval(parse(text='survival::Surv(time = SURVTIME, event = EVENT)'), envir = parent.frame())
       
