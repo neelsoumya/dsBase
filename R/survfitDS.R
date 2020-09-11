@@ -46,17 +46,38 @@ survfitDS<-function(formula=NULL)
       
       # TODO: convert special characters in formula here
       # TODO: use formula here and remove later
-      formula = "surv_object ~ 1"
+      # formula = "surv_object ~ 1"
       
-      formula = stats::as.formula(formula)
-      
+      # check if formula is provided
       if (is.null(formula))
       {
             stop("The input must have a non-empty formula to be used in survival::survfit()", call.=FALSE)
       }
-      
-      survfit_object <- survival::survfit(formula)
+
+      #####################################################################	
+      # Logic for reconstructing formula: since this need to be passed
+      #     to parser, we need to remove special symbols
+      #     On the server-side function (survfitDS) this needs
+      #     to be reconstructed
+      #     formula as text, then split at pipes to avoid triggering parser
+      #####################################################################
+      # formula = as.formula(paste(formula,collapse="|"))
+      formula <- Reduce(paste, deparse(formula))
+      formula <- gsub("sssss", "survival::Surv(", formula, fixed = TRUE)
+      formula <- gsub("lll", "=", formula, fixed = TRUE)
+      formula <- gsub("xxx", "|", formula, fixed = TRUE)
+      formula <- gsub("yyy", "(", formula, fixed = TRUE)
+      formula <- gsub("zzz", ")", formula, fixed = TRUE)
+      formula <- gsub("ppp", "/", formula, fixed = TRUE)
+      formula <- gsub("qqq", ":", formula, fixed = TRUE)
+      formula <- gsub("rrr", ",", formula, fixed = TRUE)
+
+      # convert to type formula
+      formula <- stats::as.formula(formula)
+            
+      # call survival:: survfit
       # TODO: inject random noise
+      survfit_object <- survival::survfit(formula)
       
       
       
