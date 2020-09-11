@@ -47,7 +47,16 @@ survfitDS<-function(formula=NULL)
       # TODO: convert special characters in formula here
       # TODO: use formula here and remove later
       formula = "surv_object ~ 1"
+      
+      if (is.null(formula))
+      {
+            stop("The input must have a non-empty formula to be used in survival::survfit()", call.=FALSE)
+      }
+      
       survfit_object <- survival::survfit(formula)
+      # TODO: inject random noise
+      
+      
       
       # surv_object <- eval(parse(text='survival::Surv(time = SURVTIME, event = EVENT)'), envir = parent.frame())
       
