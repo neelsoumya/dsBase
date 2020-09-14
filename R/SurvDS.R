@@ -32,7 +32,15 @@ SurvDS<-function(start=NULL, stop=NULL, event=NULL)
       #########################################################################
       
     
-      dsBase::classDS(x=start)
+      #################################
+      # check type of all parameters
+      #################################
+      class_start <- dsBase::classDS(x=start)
+      if ( !('numeric' %in% class_start)  & !('integer' %in% class_start) )
+      {
+            stop('Start time parameter (start) must be numeric or integer.', call.=FALSE)
+      }
+      
       # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
       # start = 'STARTTIME'
