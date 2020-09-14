@@ -35,16 +35,22 @@ SurvDS<-function(start=NULL, stop=NULL, event=NULL)
       #################################
       # check type of all parameters
       #################################
+      # check for start parameter
       class_start <- dsBase::classDS(x=start)
-      if ( !('numeric' %in% class_start)  & !('integer' %in% class_start) )
+      if ( !('numeric' %in% class_start) & !('integer' %in% class_start) )
       {
             stop('Start time parameter (start) must be numeric or integer.', call.=FALSE)
       }
       
+      # check for stop parameter
+      class_stop <- dsBase::classDS(x=stop)
+      if( !('numeric' %in% class_stop) & !('integer' %in% class_stop) )
+      {
+            stop('Stop time parameter (stop) must be numeric or integer.', call.=FALSE)
+      }
+      
       # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
-      # start = 'STARTTIME'
-      # stop  = 'ENDTIME'
       # str_command = paste0('survival::Surv(time = ', time)
       str_command = paste0('survival::Surv(time = ', start)
       str_command = paste0(str_command, ', time2 = ') 
@@ -57,13 +63,6 @@ SurvDS<-function(start=NULL, stop=NULL, event=NULL)
       surv_object <- eval(parse(text=str_command), envir = parent.frame())
       
       # surv_object <- eval(parse(text='survival::Surv(time = SURVTIME, event = EVENT)'), envir = parent.frame())
-      
-      # surv_object <- "HellofromSurvDS"
-      
-      # cat('\n Hello World from server-side function coxphSLMADS() in dsBase \n')
-      # temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
-      # outlist <- paste0(search.filter, temp_str)
-      # return(outlist)
       
       return(surv_object)
 }
