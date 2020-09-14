@@ -32,6 +32,7 @@ SurvDS<-function(start=NULL, stop=NULL, event=NULL)
       #########################################################################
       
     
+      dsBase::classDS(x=start)
       # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
       # start = 'STARTTIME'
