@@ -51,7 +51,7 @@ SurvDS<-function(start=NULL, stop=NULL, event=NULL)
       
       # check type for event parameter
       class_event <- dsBase::classDS(x=event)
-      if ( !('numeric' %in% class_event) & !('integer' %n% class_event) )
+      if ( !('numeric' %in% class_event) & !('integer' %in% class_event) )
       {
             stop('Event parameter (event) must be numeric or integer.', call.=FALSE)
       }
