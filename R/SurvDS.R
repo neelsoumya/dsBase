@@ -35,18 +35,25 @@ SurvDS<-function(start=NULL, stop=NULL, event=NULL)
       #################################
       # check type of all parameters
       #################################
-      # check for start parameter
+      # check type for start parameter
       class_start <- dsBase::classDS(x=start)
       if ( !('numeric' %in% class_start) & !('integer' %in% class_start) )
       {
             stop('Start time parameter (start) must be numeric or integer.', call.=FALSE)
       }
       
-      # check for stop parameter
+      # check type for stop parameter
       class_stop <- dsBase::classDS(x=stop)
       if( !('numeric' %in% class_stop) & !('integer' %in% class_stop) )
       {
             stop('Stop time parameter (stop) must be numeric or integer.', call.=FALSE)
+      }
+      
+      # check type for event parameter
+      class_event <- dsBase::classDS(x=event)
+      if ( !('numeric' %in% class_event) & !('integer' %n% class_event) )
+      {
+            stop('Event parameter (event) must be numeric or integer.', call.=FALSE)
       }
       
       # construct a call to Surv function with these parameters
