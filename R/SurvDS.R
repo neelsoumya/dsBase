@@ -21,10 +21,10 @@
 #' @return a survival::Surv() object from the server side environment.
 #' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
-SurvDS<-function(time=NULL,
-                 time2=NULL,
-                 event=NULL,
-                 type = c('right', 'left', 'interval', 'counting', 'interval2', 'mstate'),
+SurvDS<-function(time = NULL,
+                 time2 = NULL,
+                 event = NULL,
+                 type = NULL, #c('right', 'left', 'interval', 'counting', 'interval2', 'mstate'),
 		 origin = 0)
 {
       #########################################################################
