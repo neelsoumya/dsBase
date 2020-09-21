@@ -67,9 +67,9 @@ SurvDS<-function(time = NULL,
       
       # check type for event parameter
       class_event <- dsBase::classDS(x=event)
-      if ( !('numeric' %in% class_event) & !('integer' %in% class_event) )
+      if ( !('numeric' %in% class_event) & !('integer' %in% class_event) & !('factor' %in% class_event) )
       {
-            stop('Event parameter (event) must be numeric or integer.', call.=FALSE)
+            stop('Event parameter (event) must be numeric or integer or factor.', call.=FALSE)
       }
       
       #########################################################################	
@@ -106,20 +106,21 @@ SurvDS<-function(time = NULL,
       # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
       # str_command = paste0('survival::Surv(time = ', time)
-      str_command = paste0("survival::Surv(time = ", time)
-      str_command = paste0(str_command, ", time2 = ") 
-      str_command = paste0(str_command, time2)
-      str_command = paste0(str_command, ", event = ") 
-      str_command = paste0(str_command, event)
-      #str_command = paste0(str_command, ", type = ")
-      #str_command = paste0(str_command, type)
-      str_command = paste0(str_command, ", origin = ")
-      str_command = paste0(str_command, origin)	
-      str_command = paste0(str_command, ")")
+      # str_command = paste0("survival::Surv(time = ", time)
+      # str_command = paste0(str_command, ", time2 = ") 
+      # str_command = paste0(str_command, time2)
+      # str_command = paste0(str_command, ", event = ") 
+      # str_command = paste0(str_command, event)
+      # #str_command = paste0(str_command, ", type = ")
+      # #str_command = paste0(str_command, type)
+      # str_command = paste0(str_command, ", origin = ")
+      # str_command = paste0(str_command, origin)	
+      # str_command = paste0(str_command, ")")
       
       # evaluate this
       # surv_object <- eval(parse(text=str_command), envir = parent.frame())
  
+      # evaluate this expression	
       if (!is.null(time2_param))
       {	  
            surv_object <- survival::Surv(time = time_param, event = event_param, time2 = time2_param, type = type, origin = origin)
