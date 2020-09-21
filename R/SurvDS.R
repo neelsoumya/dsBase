@@ -44,10 +44,10 @@ SurvDS<-function(start=NULL, stop=NULL, event=NULL)
       
       # check type for stop parameter
       class_stop <- dsBase::classDS(x=stop)
-      # if this is not NULL, only then check if it is numeric or integer
+      # if stop is not NULL, only then check if it is numeric or integer
       #     this is because stop or time2 is an optional parameter
       #     for use in interval censored data
-      if (!is.null(class_stop))
+      if (!is.null(stop))
       {      
             if( !('numeric' %in% class_stop) & !('integer' %in% class_stop) )
             {
