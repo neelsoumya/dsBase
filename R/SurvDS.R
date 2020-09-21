@@ -6,16 +6,16 @@
 #' returns a Survival object for use in Cox proportional hazards from the server side environment from the server side environment.
 #' This request is not disclosive as it only returns a string.
 #' For further details see help for {ds.Surv} function.
-#' @param start name of start time parameter to be passed to Surv(). 
+#' @param time name of start time or follow-up time parameter to be passed to Surv(). 
 #'      Should be a character string.
-#' @param stop name of stop time parameter to be passed to Surv(). 
+#' @param time2 name of stop time parameter to be passed to Surv(). 
 #'      Should be a character string.
 #' @param event name of event parameter to be passed to Surv()
 #'      Should be character string.
 #' @return a survival::Surv() object from the server side environment.
 #' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
-SurvDS<-function(start=NULL, stop=NULL, event=NULL)
+SurvDS<-function(time=NULL, time2=NULL, event=NULL)
 {
       #########################################################################
       # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
@@ -35,23 +35,23 @@ SurvDS<-function(start=NULL, stop=NULL, event=NULL)
       #################################
       # check type of all parameters
       #################################
-      # check type for start parameter
-      class_start <- dsBase::classDS(x=start)
-      if ( !('numeric' %in% class_start) & !('integer' %in% class_start) )
+      # check type for time parameter
+      class_time <- dsBase::classDS(x=time)
+      if ( !('numeric' %in% class_time) & !('integer' %in% class_time) )
       {
-            stop('Start time parameter (start) must be numeric or integer.', call.=FALSE)
+            stop('Start time parameter or follow-up time parameter (time) must be numeric or integer.', call.=FALSE)
       }
       
-      # check type for stop parameter
-      class_stop <- dsBase::classDS(x=stop)
-      # if stop is not NULL, only then check if it is numeric or integer
-      #     this is because stop or time2 is an optional parameter
+      # check type for time2 parameter
+      class_time2 <- dsBase::classDS(x=time2)
+      # if time2 is not NULL, only then check if it is numeric or integer
+      #     this is because time2 is an optional parameter
       #     for use in interval censored data
-      if (!is.null(stop))
+      if (!is.null(time2))
       {      
-            if( !('numeric' %in% class_stop) & !('integer' %in% class_stop) )
+            if( !('numeric' %in% class_time2) & !('integer' %in% class_time2) )
             {
-                  stop('Stop time parameter (stop) must be numeric or integer.', call.=FALSE)
+                  stop('Stop time parameter (time2) must be numeric or integer.', call.=FALSE)
             }
       }
       
@@ -65,9 +65,9 @@ SurvDS<-function(start=NULL, stop=NULL, event=NULL)
       # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
       # str_command = paste0('survival::Surv(time = ', time)
-      str_command = paste0('survival::Surv(time = ', start)
+      str_command = paste0('survival::Surv(time = ', time)
       str_command = paste0(str_command, ', time2 = ') 
-      str_command = paste0(str_command, stop)
+      str_command = paste0(str_command, time2)
       str_command = paste0(str_command, ', event = ') 
       str_command = paste0(str_command, event)
       str_command = paste0(str_command, ')')
