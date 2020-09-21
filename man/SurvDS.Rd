@@ -4,7 +4,13 @@
 \alias{SurvDS}
 \title{Creates a survival object for survival analysis using the Cox proportional hazards model at the serverside environment}
 \usage{
-SurvDS(time = NULL, time2 = NULL, event = NULL)
+SurvDS(
+  time = NULL,
+  time2 = NULL,
+  event = NULL,
+  type = c("right", "left", "interval", "counting", "interval2", "mstate"),
+  origin = 0
+)
 }
 \arguments{
 \item{time}{name of start time or follow-up time parameter to be passed to Surv(). 
@@ -15,6 +21,14 @@ Should be a character string.}
 
 \item{event}{name of event parameter to be passed to Surv()
 Should be character string.}
+
+\item{type}{character string specifying the type of censoring. Possible values are "right", "left",
+"counting", "interval", "interval2", or "mstate"}
+
+\item{origin}{numeric, used for counting process data and is the hazard function origin.
+The origin parameter is used with time-dependent strata in order to align the subjects
+properly when they cross over from one strata to another. This parameter has rarely
+proven useful.}
 }
 \value{
 a survival::Surv() object from the server side environment.
