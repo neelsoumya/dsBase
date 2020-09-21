@@ -122,11 +122,11 @@ SurvDS<-function(time=NULL,
  
       if (!is.null(time2_param))
       {	  
-           surv_object <- survival::Surv(time = time_param, event = event_param, time2 = time2_param)
+           surv_object <- survival::Surv(time = time_param, event = event_param, time2 = time2_param, type = type, origin = origin)
       }
       else
       {
-	   surv_object <- survival::Surv(time = time_param, event = event_param)     
+	   surv_object <- survival::Surv(time = time_param, event = event_param, type = type, origin = origin)     
       }	      
 	
       
