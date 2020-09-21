@@ -4,13 +4,13 @@
 \alias{SurvDS}
 \title{Creates a survival object for survival analysis using the Cox proportional hazards model at the serverside environment}
 \usage{
-SurvDS(start = NULL, stop = NULL, event = NULL)
+SurvDS(time = NULL, time2 = NULL, event = NULL)
 }
 \arguments{
-\item{start}{name of start time parameter to be passed to Surv(). 
+\item{time}{name of start time or follow-up time parameter to be passed to Surv(). 
 Should be a character string.}
 
-\item{stop}{name of stop time parameter to be passed to Surv(). 
+\item{time2}{name of stop time parameter to be passed to Surv(). 
 Should be a character string.}
 
 \item{event}{name of event parameter to be passed to Surv()
