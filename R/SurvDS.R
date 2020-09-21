@@ -123,11 +123,29 @@ SurvDS<-function(time = NULL,
       # evaluate this expression	
       if (!is.null(time2_param))
       {	  
-           surv_object <- survival::Surv(time = time_param, event = event_param, time2 = time2_param, type = type, origin = origin)
+	   # if type is NULL, then do not pass it. Surv() has internal logic to derive type
+	   # 	from the values of the other parameters   
+	   if (!is.null(type))
+	   {	   
+           	surv_object <- survival::Surv(time = time_param, event = event_param, time2 = time2_param, type = type, origin = origin)
+	   }
+	   else
+	   {
+	        surv_object <- survival::Surv(time = time_param, event = event_param, time2 = time2_param, origin = origin)	   
+	   }
       }
       else
       {
-	   surv_object <- survival::Surv(time = time_param, event = event_param, type = type, origin = origin)     
+	   # if type is NULL, then do not pass it. Surv() has internal logic to derive type
+	   #	from the values of the other parameters  
+	   if (!is.null(type))
+           {
+	   	surv_object <- survival::Surv(time = time_param, event = event_param, type = type, origin = origin)
+	   }
+	   else
+	   {
+		surv_object <- survival::Surv(time = time_param, event = event_param, origin = origin)   
+	   }	   
       }	      
 	
       
