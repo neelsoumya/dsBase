@@ -12,10 +12,20 @@
 #'      Should be a character string.
 #' @param event name of event parameter to be passed to Surv()
 #'      Should be character string.
+#' @param type character string specifying the type of censoring. Possible values are "right", "left",
+#'	"counting", "interval", "interval2", or "mstate"
+#' @param origin numeric, used for counting process data and is the hazard function origin.
+#'	The origin parameter is used with time-dependent strata in order to align the subjects
+#'	properly when they cross over from one strata to another. This parameter has rarely
+#'	proven useful.
 #' @return a survival::Surv() object from the server side environment.
 #' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
-SurvDS<-function(time=NULL, time2=NULL, event=NULL)
+SurvDS<-function(time=NULL,
+                 time2=NULL,
+                 event=NULL,
+                 type = c('right', 'left', 'interval', 'counting', 'interval2', 'mstate'),
+		     origin = 0)
 {
       #########################################################################
       # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
