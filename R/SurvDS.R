@@ -120,7 +120,7 @@ SurvDS<-function(time=NULL,
       # evaluate this
       # surv_object <- eval(parse(text=str_command), envir = parent.frame())
  
-      if (!is.null(time2_param)
+      if (!is.null(time2_param))
       {	  
            surv_object <- survival::Surv(time = time_param, event = event_param, time2 = time2_param)
       }
