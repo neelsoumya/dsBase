@@ -25,7 +25,7 @@ SurvDS<-function(time=NULL,
                  time2=NULL,
                  event=NULL,
                  type = c('right', 'left', 'interval', 'counting', 'interval2', 'mstate'),
-		     origin = 0)
+		 origin = 0)
 {
       #########################################################################
       # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
@@ -75,12 +75,12 @@ SurvDS<-function(time=NULL,
       # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
       # str_command = paste0('survival::Surv(time = ', time)
-      str_command = paste0('survival::Surv(time = ', time)
-      str_command = paste0(str_command, ', time2 = ') 
+      str_command = paste0("survival::Surv(time = ", time)
+      str_command = paste0(str_command, ", time2 = ") 
       str_command = paste0(str_command, time2)
-      str_command = paste0(str_command, ', event = ') 
+      str_command = paste0(str_command, ", event = ") 
       str_command = paste0(str_command, event)
-      str_command = paste0(str_command, ')')
+      str_command = paste0(str_command, ")")
       
       # evaluate this
       surv_object <- eval(parse(text=str_command), envir = parent.frame())
