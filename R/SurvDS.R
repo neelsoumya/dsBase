@@ -25,7 +25,7 @@ SurvDS<-function(time = NULL,
                  time2 = NULL,
                  event = NULL,
                  type = NULL, #c('right', 'left', 'interval', 'counting', 'interval2', 'mstate'),
-		 origin = NULL, # 0)
+		 origin = NULL)
 {
       #########################################################################
       # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
