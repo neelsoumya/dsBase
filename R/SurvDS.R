@@ -72,6 +72,9 @@ SurvDS<-function(time=NULL,
             stop('Event parameter (event) must be numeric or integer.', call.=FALSE)
       }
       
+
+      type = 'right'	
+      	
       # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
       # str_command = paste0('survival::Surv(time = ', time)
