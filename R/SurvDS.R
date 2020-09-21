@@ -72,12 +72,37 @@ SurvDS<-function(time=NULL,
             stop('Event parameter (event) must be numeric or integer.', call.=FALSE)
       }
       
+      #########################################################################	
+      # evaluate all these parameters in the parent frame in the call stack	
+      #########################################################################	
       if (!is.null(time))
       {
 	      time_param = eval(parse(text=time), envir = parent.frame())
       }
+      else
+      {
+	      time_param = NULL
+      } 	      
       
-      	
+      if (!is.null(time2))
+      {
+	      time2_param = eval(parse(text=time2), envir = parent.frame())
+      }
+      else
+      {
+	      time2_param = NULL
+      }	      
+	
+      if (!is.null(event))
+      {
+	      event_param = eval(parse(text=event), envir = parent.frame())
+      }
+      else
+      {
+	      event_param = NULL
+      }	      
+	      
+	
       # construct a call to Surv function with these parameters
       # surv_object <- survival::Surv(time = SURVTIME, event = EVENT)
       # str_command = paste0('survival::Surv(time = ', time)
