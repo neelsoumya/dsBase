@@ -118,7 +118,10 @@ SurvDS<-function(time=NULL,
       str_command = paste0(str_command, ")")
       
       # evaluate this
-      surv_object <- eval(parse(text=str_command), envir = parent.frame())
+      # surv_object <- eval(parse(text=str_command), envir = parent.frame())
+ 
+      surv_object <- survival::Surv(time=time_param, event=event_param, time2 = time2_param)	
+	
       
       # surv_object <- eval(parse(text='survival::Surv(time = SURVTIME, event = EVENT)'), envir = parent.frame())
       
