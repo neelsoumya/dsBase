@@ -9,10 +9,11 @@
 #' @param formula either NULL or a character string (potentially including '*'
 #' wildcards) specifying a formula.
 #' @param dataName character string of name of data frame
+#' @param weights vector of case weights
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
-coxphSLMADS<-function(formula=NULL, dataName=NULL)
+coxphSLMADS<-function(formula=NULL, dataName=NULL, weights)
 {
       
       errorMessage <- "No errors"
@@ -81,7 +82,9 @@ coxphSLMADS<-function(formula=NULL, dataName=NULL)
       #                                   data = dataTable)
       
       cxph_serverside <- survival::coxph(formula = formula,
-                                         data = dataTable)
+                                         data = dataTable,
+                                         weights = weights
+                                        )
       
       ###########################
       # disclosure checks
