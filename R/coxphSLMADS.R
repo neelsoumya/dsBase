@@ -13,7 +13,9 @@
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
-coxphSLMADS<-function(formula=NULL, dataName=NULL, weights)
+coxphSLMADS<-function(formula = NULL,
+                      dataName = NULL,
+                      weights = NULL)
 {
       
       errorMessage <- "No errors"
