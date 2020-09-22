@@ -4,7 +4,7 @@
 \alias{coxphSLMADS}
 \title{Performs survival analysis using the Cox proportional hazards model at the serverside environment.}
 \usage{
-coxphSLMADS(formula = NULL, dataName = NULL, weights)
+coxphSLMADS(formula = NULL, dataName = NULL, weights = NULL)
 }
 \arguments{
 \item{formula}{either NULL or a character string (potentially including '*'
