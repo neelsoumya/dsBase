@@ -4,13 +4,15 @@
 \alias{coxphSLMADS}
 \title{Performs survival analysis using the Cox proportional hazards model at the serverside environment.}
 \usage{
-coxphSLMADS(formula = NULL, dataName = NULL)
+coxphSLMADS(formula = NULL, dataName = NULL, weights)
 }
 \arguments{
 \item{formula}{either NULL or a character string (potentially including '*'
 wildcards) specifying a formula.}
 
 \item{dataName}{character string of name of data frame}
+
+\item{weights}{vector of case weights}
 }
 \value{
 a summary of the Cox proportional hazards from the server side environment from the server side environment.
