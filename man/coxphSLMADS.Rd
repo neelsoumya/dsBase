@@ -10,7 +10,10 @@ coxphSLMADS(
   weights = NULL,
   init = NULL,
   ties = "efron",
-  singular.ok = TRUE
+  singular.ok = TRUE,
+  model = FALSE,
+  x = FALSE,
+  y = TRUE
 )
 }
 \arguments{
@@ -31,6 +34,12 @@ The Efron approximation is used as the default. Other options are
 Default is TRUE. If TRUE, the program will automatically skip over columns of the 
 X matrix that are linear combinations of earlier columns. In this case the coefficients
 of such columns will be NA and the variance matrix will contain zeros.}
+
+\item{model}{logical value. If TRUE, the model frame is returned in component model.}
+
+\item{x}{logical value. If TRUE, the x matrix is returned in component x.}
+
+\item{y}{logical value. If TRUE, the response vector is returned in component y.}
 }
 \value{
 a summary of the Cox proportional hazards from the server side environment from the server side environment.
