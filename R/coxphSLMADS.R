@@ -14,6 +14,10 @@
 #' @param ties character string specifying the method for tie handling.
 #'          The Efron approximation is used as the default. Other options are
 #'          'breslow' and 'exact'.
+#' @param singular.ok Logical value indicating how to handle collinearity in the model matrix.
+#'        Default is TRUE. If TRUE, the program will automatically skip over columns of the 
+#'        X matrix that are linear combinations of earlier columns. In this case the coefficients
+#'        of such columns will be NA and the variance matrix will contain zeros.
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
@@ -21,7 +25,8 @@ coxphSLMADS<-function(formula = NULL,
                       dataName = NULL,
                       weights = NULL,
                       init = NULL,
-                      ties = 'efron'
+                      ties = 'efron',
+                      singular.ok = TRUE
                      )
 {
       
@@ -102,7 +107,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  data = dataTable,
                                                  weights = weights,
                                                  init = init,
-                                                 ties = ties
+                                                 ties = ties,
+                                                 singular.ok = singular.ok
                                                 )
       }
       else
@@ -110,7 +116,8 @@ coxphSLMADS<-function(formula = NULL,
               cxph_serverside <- survival::coxph(formula = formula,
                                                  data = dataTable,
                                                  weights = weights,
-                                                 ties = ties
+                                                 ties = ties,
+                                                 singular.ok = singular.ok
                                                  )
       }
       
