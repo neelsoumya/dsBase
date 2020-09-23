@@ -10,12 +10,15 @@
 #' wildcards) specifying a formula.
 #' @param dataName character string of name of data frame
 #' @param weights vector of case weights
+#' @param init vector of initial values of the iteration
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
 coxphSLMADS<-function(formula = NULL,
                       dataName = NULL,
-                      weights = NULL)
+                      weights = NULL,
+                      init
+                     )
 {
       
       errorMessage <- "No errors"
@@ -57,6 +60,7 @@ coxphSLMADS<-function(formula = NULL,
       formula <- gsub("qqq", ":", formula, fixed = TRUE)
       formula <- gsub("rrr", ",", formula, fixed = TRUE)
 
+      # convert back to formula
       formula <- stats::as.formula(formula)
       
       
@@ -85,7 +89,8 @@ coxphSLMADS<-function(formula = NULL,
       
       cxph_serverside <- survival::coxph(formula = formula,
                                          data = dataTable,
-                                         weights = weights
+                                         weights = weights,
+                                         init = init
                                         )
       
       ###########################
@@ -95,6 +100,7 @@ coxphSLMADS<-function(formula = NULL,
       num_parameters  <- length(cxph_serverside$coefficients)
       num_data_points <- cxph_serverside$n
       
+      # if number of parameters greater than 0.2 * number of data points, then error
       if(num_parameters > (nfilter.glm * num_data_points) )
       {
             #glm.saturation.invalid<-1
