@@ -9,7 +9,8 @@ coxphSLMADS(
   dataName = NULL,
   weights = NULL,
   init = NULL,
-  ties = "efron"
+  ties = "efron",
+  singular.ok = TRUE
 )
 }
 \arguments{
@@ -25,6 +26,11 @@ wildcards) specifying a formula.}
 \item{ties}{character string specifying the method for tie handling.
 The Efron approximation is used as the default. Other options are
 'breslow' and 'exact'.}
+
+\item{singular.ok}{Logical value indicating how to handle collinearity in the model matrix.
+Default is TRUE. If TRUE, the program will automatically skip over columns of the 
+X matrix that are linear combinations of earlier columns. In this case the coefficients
+of such columns will be NA and the variance matrix will contain zeros.}
 }
 \value{
 a summary of the Cox proportional hazards from the server side environment from the server side environment.
