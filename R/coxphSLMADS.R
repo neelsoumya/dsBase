@@ -17,7 +17,7 @@
 coxphSLMADS<-function(formula = NULL,
                       dataName = NULL,
                       weights = NULL,
-                      init
+                      init = NULL
                      )
 {
       
@@ -87,11 +87,22 @@ coxphSLMADS<-function(formula = NULL,
       #cxph_serverside <- survival::coxph(formula = survival::Surv(time = SURVTIME, event = EVENT) ~  D$female,
       #                                   data = dataTable)
       
-      cxph_serverside <- survival::coxph(formula = formula,
-                                         data = dataTable,
-                                         weights = weights,
-                                         init = init
-                                        )
+      # if init is NULL, then do not call coxph with init parameter
+      if (!is.null(init))
+      {
+              cxph_serverside <- survival::coxph(formula = formula,
+                                                 data = dataTable,
+                                                 weights = weights,
+                                                 init = init
+                                                )
+      }
+      else
+      {
+              cxph_serverside <- survival::coxph(formula = formula,
+                                                 data = dataTable,
+                                                 weights = weights
+                                                 )
+      }
       
       ###########################
       # disclosure checks
