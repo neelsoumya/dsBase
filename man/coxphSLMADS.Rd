@@ -4,7 +4,13 @@
 \alias{coxphSLMADS}
 \title{Performs survival analysis using the Cox proportional hazards model at the serverside environment.}
 \usage{
-coxphSLMADS(formula = NULL, dataName = NULL, weights = NULL, init = NULL)
+coxphSLMADS(
+  formula = NULL,
+  dataName = NULL,
+  weights = NULL,
+  init = NULL,
+  ties = "efron"
+)
 }
 \arguments{
 \item{formula}{either NULL or a character string (potentially including '*'
@@ -15,6 +21,10 @@ wildcards) specifying a formula.}
 \item{weights}{vector of case weights}
 
 \item{init}{vector of initial values of the iteration}
+
+\item{ties}{character string specifying the method for tie handling.
+The Efron approximation is used as the default. Other options are
+'breslow' and 'exact'.}
 }
 \value{
 a summary of the Cox proportional hazards from the server side environment from the server side environment.
