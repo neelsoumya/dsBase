@@ -11,13 +11,17 @@
 #' @param dataName character string of name of data frame
 #' @param weights vector of case weights
 #' @param init vector of initial values of the iteration
+#' @param ties character string specifying the method for tie handling.
+#'          The Efron approximation is used as the default. Other options are
+#'          'breslow' and 'exact'.
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
 coxphSLMADS<-function(formula = NULL,
                       dataName = NULL,
                       weights = NULL,
-                      init = NULL
+                      init = NULL,
+                      ties = 'efron'
                      )
 {
       
@@ -87,20 +91,26 @@ coxphSLMADS<-function(formula = NULL,
       #cxph_serverside <- survival::coxph(formula = survival::Surv(time = SURVTIME, event = EVENT) ~  D$female,
       #                                   data = dataTable)
       
+  
+      ########################################
+      # construct call to survival::coxph()
+      ########################################
       # if init is NULL, then do not call coxph with init parameter
       if (!is.null(init))
       {
               cxph_serverside <- survival::coxph(formula = formula,
                                                  data = dataTable,
                                                  weights = weights,
-                                                 init = init
+                                                 init = init,
+                                                 ties = ties
                                                 )
       }
       else
       {
               cxph_serverside <- survival::coxph(formula = formula,
                                                  data = dataTable,
-                                                 weights = weights
+                                                 weights = weights,
+                                                 ties = ties
                                                  )
       }
       
