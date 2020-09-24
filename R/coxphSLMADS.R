@@ -122,10 +122,16 @@ coxphSLMADS<-function(formula = NULL,
             ####################################################################	
             # Logic for parsing formula: since this need to be passed
             ####################################################################	
-        
+           
             # Put pipes back into formula
             #formula = as.formula(paste(formula,collapse="|"))
+	    
             control <- Reduce(paste, deparse(control))
+	    # remove the extra ~ bbbb passed here
+	    #	this ~ bbbb needs to be passed because
+	    #   everything needs to be passed as formula
+	    #	and an expression of the form a ~ b is required	  
+	    control <- gsub("~bbbb", "", control, fixed = TRUE)   
             control <- gsub("aaaaa", "survival::coxph.control(", control, fixed =  TRUE)
    	    control <- gsub("xxx", "|", control, fixed = TRUE)
    	    control <- gsub("yyy", "(", control, fixed = TRUE)
@@ -135,7 +141,7 @@ coxphSLMADS<-function(formula = NULL,
 	    control <- gsub("rrr", ",", control, fixed = TRUE)
 	    #control <- gsub("", " ",    control, fixed = TRUE)
 	    control <- gsub("lll", "=", control, fixed = TRUE)
-        
+            
             # use eval to construct an object of type survival::coxph.control()
             control <- eval(parse(text=control), envir = parent.frame())
         
