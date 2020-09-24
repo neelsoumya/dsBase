@@ -162,7 +162,7 @@ coxphSLMADS<-function(formula = NULL,
                                                  model = model,
                                                  x = x,
                                                  y = y,
-                                                 control = control
+                                                 control = eval(parse(text=control))
                                                 )
       }
       else
@@ -175,7 +175,7 @@ coxphSLMADS<-function(formula = NULL,
                                                  model = model,
                                                  x = x,
                                                  y = y,
-                                                 control = control
+                                                 control = eval(parse(text=control))
                                                  )
       }
       
