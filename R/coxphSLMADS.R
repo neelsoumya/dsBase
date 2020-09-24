@@ -161,8 +161,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  singular.ok = singular.ok,
                                                  model = model,
                                                  x = x,
-                                                 y = y,
-                                                 control = eval(parse(text=control))
+                                                 y = y#,
+                                                 #control = eval(parse(text=control))
                                                 )
       }
       else
@@ -174,8 +174,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  singular.ok = singular.ok,
                                                  model = model,
                                                  x = x,
-                                                 y = y,
-                                                 control = eval(parse(text=control))
+                                                 y = y#,
+                                                 #control = eval(parse(text=control))
                                                  )
       }
       
