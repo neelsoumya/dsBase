@@ -65,7 +65,9 @@ coxphSLMADS<-function(formula = NULL,
          dataTable <- eval(parse(text=dataName), envir = parent.frame())
       }
       
-      
+      ####################################################################	
+      # Logic for parsing formula: since this need to be passed
+      ####################################################################	
       # Put pipes back into formula
       #formula = as.formula(paste(formula,collapse="|"))
       formula <- Reduce(paste, deparse(formula))
@@ -117,6 +119,13 @@ coxphSLMADS<-function(formula = NULL,
       else
       {
             # reconstruct after passing this through parser
+            ####################################################################	
+            # Logic for parsing formula: since this need to be passed
+            ####################################################################	
+        
+            # Put pipes back into formula
+            #formula = as.formula(paste(formula,collapse="|"))
+            control <- Reduce(paste, deparse(control))
         
             # use eval to construct an object of type survival::coxph.control()
         
