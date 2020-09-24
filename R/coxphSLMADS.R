@@ -21,6 +21,8 @@
 #' @param model logical value. If TRUE, the model frame is returned in component model. 
 #' @param x logical value. If TRUE, the x matrix is returned in component x.
 #' @param y logical value. If TRUE, the response vector is returned in component y.
+#' @param control object of type survival::coxph.control() specifying iteration limit and other
+#'        control options. Default is survival::coxph.control()
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
@@ -32,7 +34,8 @@ coxphSLMADS<-function(formula = NULL,
                       singular.ok = TRUE,
                       model = FALSE,
                       x = FALSE,
-                      y = TRUE
+                      y = TRUE,
+                      control = NULL
                      )
 {
       
@@ -102,6 +105,22 @@ coxphSLMADS<-function(formula = NULL,
       #cxph_serverside <- survival::coxph(formula = survival::Surv(time = SURVTIME, event = EVENT) ~  D$female,
       #                                   data = dataTable)
       
+      ########################################
+      # reconstruct control object
+      ########################################
+      if (is.null(control))
+      {
+            # if the value is null, then substitute default values which is 
+            #   survival::coxph.control()
+            control <- survival::coxph.control()
+      }
+      else
+      {
+            # reconstruct after passing this through parser
+        
+            # use eval to construct an object of type survival::coxph.control()
+        
+      }  
   
       ########################################
       # construct call to survival::coxph()
@@ -117,7 +136,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  singular.ok = singular.ok,
                                                  model = model,
                                                  x = x,
-                                                 y = y
+                                                 y = y,
+                                                 control = control
                                                 )
       }
       else
@@ -129,7 +149,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  singular.ok = singular.ok,
                                                  model = model,
                                                  x = x,
-                                                 y = y
+                                                 y = y,
+                                                 control = control
                                                  )
       }
       
