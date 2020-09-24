@@ -143,7 +143,7 @@ coxphSLMADS<-function(formula = NULL,
 	    control <- gsub("lll", "=", control, fixed = TRUE)
             
             # use eval to construct an object of type survival::coxph.control()
-            control <- eval(parse(text=control), envir = parent.frame())
+            # control <- eval(parse(text=control), envir = parent.frame())
         
       }  
   
