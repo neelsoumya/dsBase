@@ -65,6 +65,12 @@ coxphSLMAassignDS<-function(formula = NULL,
          dataTable <- eval(parse(text=dataName), envir = parent.frame())
       }
       
+      # check if formula is set
+      if (is.null(formula))
+      {
+         stop("The formula must be set for use in survival::coxph()", call.=FALSE)
+      } 
+
       ####################################################################	
       # Logic for parsing formula: since this need to be passed
       ####################################################################	
@@ -201,6 +207,7 @@ coxphSLMAassignDS<-function(formula = NULL,
       # temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
       # outlist <- paste0(search.filter, temp_str)
       # return(outlist)
+
       return(cxph_serverside)
 }
 #ASSIGN FUNCTION
