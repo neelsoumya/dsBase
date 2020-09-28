@@ -12,12 +12,26 @@
 #' For further details see help for {ds.cox.zphSLMA} function.
 #' @param fit character string specifying name of fit Cox proportional 
 #'	hazards model saved in the server-side.
-#' @param dataName character string of name of data frame
+#' @param transform character string specifying how the survival times should be transformed
+#' 	before the test is performed. Possible values are "km", "rank", "identity" or a
+#' 	function of one argument.
+#' @param terms logical if TRUE, do a test for each term in the model rather than for each
+#'	separate covariate. For a factor variable with k levels, for instance, this would lead
+#'	to a k-1 degree of freedom test. The plot for such variables will be a single curve
+#'	evaluating the linear predictor over time.
+#' @param singledf logical use a single degree of freedom test for terms that have multiple 
+#'	coefficients, i.e., the test that corresponds most closely to the plot. If terms=FALSE
+#'	this argument has no effect.
+#' @param global logical should a global chi-square test be done, in addition to the per-variable
+#'	or per-term tests tests. 
 #' @return diagnostics for the Cox proportional hazards from the server side environment.
 #' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
 cox.zphSLMADS<-function(fit = NULL,
-                        dataName = NULL
+			transform = 'km',
+			terms = TRUE,
+			singledf = FALSE,
+			global = TRUE
                        )
 {
       
@@ -36,17 +50,7 @@ cox.zphSLMADS<-function(fit = NULL,
       #nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
       #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
       #########################################################################
-      
-      # get the value of the 'data' and 'weights' parameters provided as character on the client side
-      if(is.null(dataName))
-      {
-         dataTable <- NULL 
-      }
-      else
-      {
-         dataTable <- eval(parse(text=dataName), envir = parent.frame())
-      }
-      
+            
       # check if name of fit model is set
       if (is.null(fit))
       {
@@ -61,7 +65,12 @@ cox.zphSLMADS<-function(fit = NULL,
       ########################################
       # construct call to survival::cox.zph()
       ########################################
-      coxzph_serverside <- survival::cox.zph(fit = fit_model)      
+      coxzph_serverside <- survival::cox.zph(fit = fit_model,
+					     transform = transform,
+					     terms = terms,
+					     singledf = singledf,
+					     global = global
+					    )      
 
       ###########################
       # disclosure checks
