@@ -5,13 +5,33 @@
 \title{Tests the proportional hazards assumption of a Cox proportional
  hazards model that has been fit and saved serverside.}
 \usage{
-cox.zphSLMADS(fit = NULL, dataName = NULL)
+cox.zphSLMADS(
+  fit = NULL,
+  transform = "km",
+  terms = TRUE,
+  singledf = FALSE,
+  global = TRUE
+)
 }
 \arguments{
 \item{fit}{character string specifying name of fit Cox proportional 
 hazards model saved in the server-side.}
 
-\item{dataName}{character string of name of data frame}
+\item{transform}{character string specifying how the survival times should be transformed
+before the test is performed. Possible values are "km", "rank", "identity" or a
+function of one argument.}
+
+\item{terms}{logical if TRUE, do a test for each term in the model rather than for each
+separate covariate. For a factor variable with k levels, for instance, this would lead
+to a k-1 degree of freedom test. The plot for such variables will be a single curve
+evaluating the linear predictor over time.}
+
+\item{singledf}{logical use a single degree of freedom test for terms that have multiple 
+coefficients, i.e., the test that corresponds most closely to the plot. If terms=FALSE
+this argument has no effect.}
+
+\item{global}{logical should a global chi-square test be done, in addition to the per-variable
+or per-term tests tests.}
 }
 \value{
 diagnostics for the Cox proportional hazards from the server side environment.
