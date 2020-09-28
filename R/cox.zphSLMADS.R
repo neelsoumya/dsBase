@@ -17,7 +17,7 @@
 #' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
 cox.zphSLMADS<-function(fit = NULL,
-                        dataName = NULL,
+                        dataName = NULL
                        )
 {
       
