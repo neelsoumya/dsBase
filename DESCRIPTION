@@ -22,6 +22,7 @@ AggregateMethods:
     corDS,
     covDS,
     coxphSLMADS,
+    coxphSummaryDS,
     cox.zphSLMADS,
     dataFrameSubsetDS1,
     densityGridDS,
