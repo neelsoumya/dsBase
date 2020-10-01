@@ -154,7 +154,7 @@ coxphSLMADS<-function(formula = NULL,
       }  
   
       # TODO: remove	
-      control = "survival::coxph.control(eps = 0.001)"
+      # control = "survival::coxph.control(eps = 0.001)"
 	
       ########################################
       # construct call to survival::coxph()
@@ -170,8 +170,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  singular.ok = singular.ok,
                                                  model = model,
                                                  x = x,
-                                                 y = y,
-                                                 control = eval(parse(text=as.character(control)))
+                                                 y = y#,
+                                                 #control = eval(parse(text=as.character(control)))
                                                 )
       }
       else
@@ -183,8 +183,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  singular.ok = singular.ok,
                                                  model = model,
                                                  x = x,
-                                                 y = y,
-                                                 control = eval(parse(text=as.character(control)))
+                                                 y = y#,
+                                                 #control = eval(parse(text=as.character(control)))
                                                  )
       }
       
@@ -210,7 +210,8 @@ coxphSLMADS<-function(formula = NULL,
       # temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
       # outlist <- paste0(search.filter, temp_str)
       # return(outlist)
-      return(summary(cxph_serverside))
+      return(control)	
+      #return(summary(cxph_serverside))
 }
 #AGGREGATE FUNCTION
 # coxphSLMADS
