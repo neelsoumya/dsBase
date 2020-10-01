@@ -153,6 +153,9 @@ coxphSLMADS<-function(formula = NULL,
         
       }  
   
+      # TODO: remove	
+      control = "survival::coxph.control(eps = 0.001)"
+	
       ########################################
       # construct call to survival::coxph()
       ########################################
@@ -167,8 +170,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  singular.ok = singular.ok,
                                                  model = model,
                                                  x = x,
-                                                 y = y#,
-                                                 #control = eval(parse(text=as.character(control)))
+                                                 y = y,
+                                                 control = eval(parse(text=as.character(control)))
                                                 )
       }
       else
@@ -180,8 +183,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  singular.ok = singular.ok,
                                                  model = model,
                                                  x = x,
-                                                 y = y#,
-                                                 #control = eval(parse(text=as.character(control)))
+                                                 y = y,
+                                                 control = eval(parse(text=as.character(control)))
                                                  )
       }
       
