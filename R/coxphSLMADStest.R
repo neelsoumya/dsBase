@@ -26,17 +26,17 @@
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
 #' @author Soumya Banerjee and Tom Bishop (2020).
 #' @export
-coxphSLMADS<-function(formula = NULL,
-                      dataName = NULL,
-                      weights = NULL,
-                      init = NULL,
-                      ties = 'efron',
-                      singular.ok = TRUE,
-                      model = FALSE,
-                      x = FALSE,
-                      y = TRUE,
-                      control = NULL
-                     )
+coxphSLMADStest<-function(formula = NULL,
+                          dataName = NULL,
+                          weights = NULL,
+                          init = NULL,
+                          ties = 'efron',
+                          singular.ok = TRUE,
+                          model = FALSE,
+                          x = FALSE,
+                          y = TRUE,
+                          control = NULL
+                         )
 {
       
       errorMessage <- "No errors"
@@ -88,9 +88,6 @@ coxphSLMADS<-function(formula = NULL,
 
       # convert back to formula
       formula <- stats::as.formula(formula)
-      
-      #cxph_serverside <- survival::coxph(formula = survival::Surv(time = SURVTIME, event = EVENT) ~  D$female,
-      #                                   data = dataTable)
       
       ########################################
       # reconstruct control object
@@ -148,8 +145,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  singular.ok = singular.ok,
                                                  model = model,
                                                  x = x,
-                                                 y = y#,
-                                                 #control = eval(parse(text=as.character(control)))
+                                                 y = y,
+                                                 control = eval(parse(text=as.character(control)))
                                                 )
       }
       else
@@ -161,8 +158,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  singular.ok = singular.ok,
                                                  model = model,
                                                  x = x,
-                                                 y = y#,
-                                                 #control = eval(parse(text=as.character(control)))
+                                                 y = y,
+                                                 control = eval(parse(text=as.character(control)))
                                                  )
       }
       
@@ -188,8 +185,8 @@ coxphSLMADS<-function(formula = NULL,
       # temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
       # outlist <- paste0(search.filter, temp_str)
       # return(outlist)
-      # return(control)	
-      return(summary(cxph_serverside))
+      return(control)	
+      # return(summary(cxph_serverside))
 }
 #AGGREGATE FUNCTION
 # coxphSLMADS
