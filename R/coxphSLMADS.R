@@ -188,8 +188,8 @@ coxphSLMADS<-function(formula = NULL,
       # temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
       # outlist <- paste0(search.filter, temp_str)
       # return(outlist)
-      return(control)	
-      #return(summary(cxph_serverside))
+      # return(control)	
+      return(summary(cxph_serverside))
 }
 #AGGREGATE FUNCTION
 # coxphSLMADS
