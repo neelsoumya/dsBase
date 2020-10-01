@@ -89,27 +89,6 @@ coxphSLMADS<-function(formula = NULL,
       # convert back to formula
       formula <- stats::as.formula(formula)
       
-      
-      #    formulatext <- Reduce(paste, deparse(formula))
-      #    originalFormula <- formulatext
-      #   
-      # # Convert formula string into separate variable names split by |
-      #   formulatext <- gsub(" ", "", formulatext, fixed=TRUE)
-      #   formulatext <- gsub("~", "|", formulatext, fixed=TRUE)
-      #   formulatext <- gsub("+", "|", formulatext, fixed=TRUE)
-      #   formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
-      #   formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
-      # 
-      #    formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
-      
-      # formula2use <- formula
-      # mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataTable)
-      #cxph_serverside <- survival::coxph(formula = survival::Surv(time = survtime, event = cens) ~  female,
-      #                                   data = dataTable)
-      
-      #cxph_serverside <- survival::coxph(formula = survival::Surv(time = SURVTIME, event = EVENT) ~  1,
-      #                                   data = dataTable)
-      
       #cxph_serverside <- survival::coxph(formula = survival::Surv(time = SURVTIME, event = EVENT) ~  D$female,
       #                                   data = dataTable)
       
@@ -154,10 +133,7 @@ coxphSLMADS<-function(formula = NULL,
             # control <- eval(parse(text=control), envir = parent.frame())
         
       }  
-  
-      # TODO: remove	
-      # control = "survival::coxph.control(eps = 0.001)"
-	
+  	
       ########################################
       # construct call to survival::coxph()
       ########################################
@@ -172,8 +148,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  singular.ok = singular.ok,
                                                  model = model,
                                                  x = x,
-                                                 y = y#,
-                                                 #control = eval(parse(text=as.character(control)))
+                                                 y = y,
+                                                 control = eval(parse(text=as.character(control)))
                                                 )
       }
       else
@@ -185,8 +161,8 @@ coxphSLMADS<-function(formula = NULL,
                                                  singular.ok = singular.ok,
                                                  model = model,
                                                  x = x,
-                                                 y = y#,
-                                                 #control = eval(parse(text=as.character(control)))
+                                                 y = y,
+                                                 control = eval(parse(text=as.character(control)))
                                                  )
       }
       
