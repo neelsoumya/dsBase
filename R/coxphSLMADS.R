@@ -137,7 +137,7 @@ coxphSLMADS<-function(formula = NULL,
 	    #	this ~ bbbb needs to be passed because
 	    #   everything needs to be passed as formula
 	    #	and an expression of the form a ~ b is required	  
-	    control <- gsub("~bbbb", "", control, fixed = TRUE)   
+	    control <- gsub("~ bbbb", "", control, fixed = TRUE)   
             control <- gsub("aaaaa", "survival::coxph.control(", control, fixed =  TRUE)
    	    control <- gsub("xxx", "|", control, fixed = TRUE)
    	    control <- gsub("yyy", "(", control, fixed = TRUE)
