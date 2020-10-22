@@ -89,9 +89,6 @@ coxphSLMADS<-function(formula = NULL,
       # convert back to formula
       formula <- stats::as.formula(formula)
       
-      #cxph_serverside <- survival::coxph(formula = survival::Surv(time = SURVTIME, event = EVENT) ~  D$female,
-      #                                   data = dataTable)
-      
       ########################################
       # reconstruct control object
       ########################################
@@ -176,19 +173,15 @@ coxphSLMADS<-function(formula = NULL,
       # if number of parameters greater than 0.2 * number of data points, then error
       if(num_parameters > (nfilter.glm * num_data_points) )
       {
-            #glm.saturation.invalid<-1
-            #errorMessage.gos<-paste0("ERROR: Model is oversaturated (too many model parameters relative to sample size)",
+            # glm.saturation.invalid<-1
+            # errorMessage.gos<-paste0("ERROR: Model is oversaturated (too many model parameters relative to sample size)",
             #                 "leading to a possible risk of disclosure - please simplify model. With ",
             #                 num.p," parameters and nfilter.glm = ",round(nfilter.glm,4)," you need ",
             #                 round((num.p/nfilter.glm),0)," observations")
             return("ERROR: Model is oversaturated (too many model parameters relative to sample size)")
       }
       
-      # cat('\n Hello World from server-side function coxphSLMADS() in dsBase \n')
-      # temp_str <- 'Hello World from server-side dsBase::coxphSLMADS()'
-      # outlist <- paste0(search.filter, temp_str)
-      # return(outlist)
-      # return(control)	
+      
       return(summary(cxph_serverside))
 }
 #AGGREGATE FUNCTION
