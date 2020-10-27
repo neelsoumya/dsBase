@@ -50,6 +50,7 @@ AggregateMethods:
     messageDS,
     namesDS,
     numNaDS,
+    plotsurvfitDS,
     quantileMeanDS,
     rangeDS,
     recodeValuesDS1,
