@@ -75,9 +75,14 @@ plotsurvfitDS<-function(formula = NULL,
       ###########################
       # disclosure checks
       ###########################
-      # check if model oversaturated
+	
+      # get survfit model
       survfit_model_variable = eval(parse(text=formula), envir = parent.frame())
       
+      # modify by adding random noise to time, n.risk, n.event, etc.
+      # call plot.survival()
+      # return that	
+      # OR just return modified survfit object	
       
       return(summary(survfit_model_variable))
 }
