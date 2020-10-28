@@ -2,7 +2,7 @@
 % Please edit documentation in R/plotsurvfitDS.R
 \name{plotsurvfitDS}
 \alias{plotsurvfitDS}
-\title{Performs survival analysis using the Cox proportional hazards model at the serverside environment.}
+\title{Performs plotting of survival analysis curves.}
 \usage{
 plotsurvfitDS(
   formula = NULL,
