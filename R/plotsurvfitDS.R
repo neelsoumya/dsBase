@@ -1,5 +1,5 @@
 #' 
-#' @title Performs survival analysis using the Cox proportional hazards model at the serverside environment.
+#' @title Performs plotting of survival analysis curves.
 #' @description returns a summary of the Cox proportional hazards from the server side environment.
 #' @details Serverside aggregate function {coxphSLMADS} called by clientside function.
 #' {ds.coxphSLMA}.
@@ -82,7 +82,12 @@ plotsurvfitDS<-function(formula = NULL,
       # TODO: modify by adding random noise to time, n.risk, n.event, conf.int, etc.
       # call plot.survival()
       # return that	
-      # OR just return modified survfit object	
+      # OR just return modified survfit object
+      # add random noise
+      survfit_model_variable$surv    <- abs(rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = 0.1))
+      survfit_model_variable$n.event <- abs(rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = 0.1))
+      survfit_model_variable$n.risk  <- abs(rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = 0.1))
+	
       
       return(survfit_model_variable)
 }
