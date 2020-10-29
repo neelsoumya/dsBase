@@ -1,10 +1,10 @@
 #' 
 #' @title Performs plotting of survival analysis curves.
-#' @description returns a summary of the Cox proportional hazards from the server side environment.
-#' @details Serverside aggregate function {coxphSLMADS} called by clientside function.
-#' {ds.coxphSLMA}.
-#' returns a summary of the Cox proportional hazards from the server side environment from the server side environment.
-#' This request is not disclosive as it only returns a string.
+#' @description returns a privacy preserving survival curves.
+#' @details Serverside aggregate function {plotsurvfitDS} called by clientside function.
+#' {ds.plotsurvfit}.
+#' returns a privacy preserving survival curve from the server side environment.
+#' This request is not disclosive as it is randomized.
 #' For further details see help for {ds.coxphSLMA} function.
 #' @param formula either NULL or a character string (potentially including '*'
 #' wildcards) specifying a formula.
@@ -84,9 +84,14 @@ plotsurvfitDS<-function(formula = NULL,
       # return that	
       # OR just return modified survfit object
       # add random noise
+ 
+      # TODO: use datashield function for this	
+      set.seed(100)	
       survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = 0.1))
       survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = 0.1))
       survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = 0.1))
+      survfit_model_variable$lower   <- abs(stats::rnorm(n = length(survfit_model_variable$lower), mean = survfit_model_variable$lower, sd = 0.1))
+      survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = 0.1))
 	
       # TODO: modify conf.int	
       
