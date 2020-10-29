@@ -49,13 +49,13 @@ control options. Default is survival::coxph.control()}
 a summary of the Cox proportional hazards from the server side environment from the server side environment.
 }
 \description{
-returns a summary of the Cox proportional hazards from the server side environment.
+returns a privacy preserving survival curves.
 }
 \details{
-Serverside aggregate function {coxphSLMADS} called by clientside function.
-{ds.coxphSLMA}.
-returns a summary of the Cox proportional hazards from the server side environment from the server side environment.
-This request is not disclosive as it only returns a string.
+Serverside aggregate function {plotsurvfitDS} called by clientside function.
+{ds.plotsurvfit}.
+returns a privacy preserving survival curve from the server side environment.
+This request is not disclosive as it is randomized.
 For further details see help for {ds.coxphSLMA} function.
 }
 \author{
