@@ -6,8 +6,8 @@
 #' returns a privacy preserving survival curve from the server side environment.
 #' This request is not disclosive as it is randomized.
 #' For further details see help for {ds.coxphSLMA} function.
-#' @param formula either NULL or a character string (potentially including '*'
-#' wildcards) specifying a formula.
+#' @param formula a character string which has the name of server-side survfit() object.
+#'		This should be created using ds.survfit()
 #' @param dataName character string of name of data frame
 #' @param weights vector of case weights
 #' @param init vector of initial values of the iteration
