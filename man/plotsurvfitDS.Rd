@@ -18,8 +18,8 @@ plotsurvfitDS(
 )
 }
 \arguments{
-\item{formula}{either NULL or a character string (potentially including '*'
-wildcards) specifying a formula.}
+\item{formula}{a character string which has the name of server-side survfit() object.
+This should be created using ds.survfit()}
 
 \item{dataName}{character string of name of data frame}
 
