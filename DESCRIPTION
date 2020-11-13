@@ -1,21 +1,25 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
 Description: DataSHIELD server site base functions.
-Version: 6.0.1
+Version: 6.2.0-1
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
-Depends:
+Depends: 
     R (>= 3.5.0)
 Imports:
     RANN,
     nlme,
     stringr,
     lme4,
-    survival
+    survival,
+    ggplot2,
+    dplyr,
+    reshape2
 AggregateMethods:
     asFactorDS1,
     asListDS,
+    boxPlotGGDS,
     checkNegValueDS,
     classDS,
     corTestDS,
@@ -31,14 +35,18 @@ AggregateMethods:
     glmDS1,
     glmDS2,
     glmerSLMADS2,
+    glmPredictDS.ag,
     glmSLMADS1,
     glmSLMADS2,
+    glmSummaryDS.ag,
     heatmapPlotDS,
     histogramDS1,
     histogramDS2,
     lsDS,
     isNaDS,
     isValidDS,
+    kurtosisDS1,
+    kurtosisDS2,
     lengthDS,
     levelsDS,
     lexisDS1,
@@ -59,6 +67,8 @@ AggregateMethods:
     scoreVectDS,
     setSeedDS,
     summarySurvDS,
+    skewnessDS1,
+    skewnessDS2,
     table1DDS,
     table2DDS,
     tableDS,
@@ -78,6 +88,7 @@ AggregateMethods:
     t.test=stats::t.test,
     retStrDS
 AssignMethods:
+    absDS,
     asCharacterDS,
     asDataMatrixDS,
     asFactorDS,
@@ -88,6 +99,8 @@ AssignMethods:
     asMatrixDS,
     asNumericDS,
     BooleDS,
+    boxPlotGG_data_TreatmentDS,
+    boxPlotGG_data_Treatment_numericDS,
     cbindDS,
     cDS,
     changeRefGroupDS,
@@ -97,6 +110,10 @@ AssignMethods:
     dataFrameFillDS,
     dataFrameSortDS,
     dataFrameSubsetDS2,
+    glmPredictDS.as,
+    glmSLMADS.assign,
+    glmSummaryDS.as,
+    getWGSRDS,
     listDS,
     lexisDS2,
     lexisDS3,
@@ -122,6 +139,7 @@ AssignMethods:
     sampleDS,
     seedDS,
     seqDS,
+    sqrtDS,
     subsetByClassDS,
     subsetDS,
     SurvDS,
