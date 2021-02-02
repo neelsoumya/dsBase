@@ -1,6 +1,6 @@
 #' 
 #' @title Performs plotting of survival analysis curves.
-#' @description returns a privacy preserving survival curves.
+#' @description returns a privacy preserving survival curve.
 #' @details Serverside aggregate function {plotsurvfitDS} called by clientside function.
 #' {ds.plotsurvfit}.
 #' returns a privacy preserving survival curve from the server side environment.
@@ -87,11 +87,11 @@ plotsurvfitDS<-function(formula = NULL,
  
       # TODO: use datashield function for this	
       set.seed(100)	
-      survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = 0.1))
-      survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = 0.1))
-      survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = 0.1))
-      survfit_model_variable$lower   <- abs(stats::rnorm(n = length(survfit_model_variable$lower), mean = survfit_model_variable$lower, sd = 0.1))
-      survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = 0.1))
+      survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = 0.01))
+      survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = 0.01))
+      survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = 0.01))
+      survfit_model_variable$lower   <- abs(stats::rnorm(n = length(survfit_model_variable$lower), mean = survfit_model_variable$lower, sd = 0.01))
+      survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = 0.01))
 	
       # TODO: modify conf.int	
       
