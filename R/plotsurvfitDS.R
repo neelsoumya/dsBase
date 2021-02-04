@@ -86,6 +86,8 @@ plotsurvfitDS<-function(formula = NULL,
       # add random noise
  
       # TODO: use datashield function for this	
+      #	   https://rdrr.io/github/datashield/dsBase/man/setSeedDS.html
+      #    dsBase::setSeedDS(100)	
       set.seed(100)	
       survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = 0.01))
       survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = 0.01))
