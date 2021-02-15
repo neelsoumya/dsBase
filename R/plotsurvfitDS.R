@@ -88,7 +88,19 @@ plotsurvfitDS<-function(formula = NULL,
       # TODO: use datashield function for this	
       #	   https://rdrr.io/github/datashield/dsBase/man/setSeedDS.html
       #    dsBase::setSeedDS(100)	
-      set.seed(100)	
+      # set.seed(100)	
+      
+      # set study specific seed
+      seed <- getOption("datashield.seed")
+      if (is.null(seed))
+      {
+	      stop("plotsurvfitDS requires a seed to be set and requires 'datashield.seed' R option to operate", call.=FALSE)
+      }
+
+      # if there is a seed, then set it
+      set.seed(seed)	
+
+      # add noise to all components of survfit object	
       survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = 0.01))
       survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = 0.01))
       survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = 0.01))
