@@ -50,6 +50,7 @@ plotsurvfitDS<-function(formula = NULL,
       nfilter.string <- as.numeric(thr$nfilter.string)                        #
       nfilter.tab    <- as.numeric(thr$nfilter.tab)                           #
       nfilter.glm    <- as.numeric(thr$nfilter.glm)                           #
+      nfilter.noise  <- as.numeric(thr$nfilter.noise)                         #
       #nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)               #
       #nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
       #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
