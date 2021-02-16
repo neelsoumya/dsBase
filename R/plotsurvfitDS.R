@@ -104,7 +104,9 @@ plotsurvfitDS<-function(formula = NULL,
       # Check if the percentage of the variance that is specified in the argument 'noise'
       # and is used as the variance of the embedded noise is a greater
       # than the minimum threshold specified in the filter 'nfilter.noise'
-      if(noise < nfilter.noise){
+      noise = 0.1	
+      if(noise < nfilter.noise)
+      {
           stop(paste0("'noise' must be greater than or equal to ", nfilter.noise), call.=FALSE)
       }
       else
