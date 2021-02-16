@@ -104,7 +104,7 @@ plotsurvfitDS<-function(formula = NULL,
       # Check if the percentage of the variance that is specified in the argument 'noise'
       # and is used as the variance of the embedded noise is a greater
       # than the minimum threshold specified in the filter 'nfilter.noise'
-      noise = 0.1	
+      noise = 0.26	
       if(noise < nfilter.noise)
       {
           stop(paste0("'noise' must be greater than or equal to ", nfilter.noise), call.=FALSE)
@@ -124,7 +124,8 @@ plotsurvfitDS<-function(formula = NULL,
 	
       # TODO: modify conf.int	
       # TODO: create a new object and return that; alternatively delete all other components of survfit object	
-      
+      # return(list(x.new, y.new))
+	
       return(survfit_model_variable)
 }
 #AGGREGATE FUNCTION
