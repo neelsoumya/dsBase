@@ -101,14 +101,27 @@ plotsurvfitDS<-function(formula = NULL,
       # if there is a seed, then set it
       set.seed(seed)	
 
+      # Check if the percentage of the variance that is specified in the argument 'noise'
+      # and is used as the variance of the embedded noise is a greater
+      # than the minimum threshold specified in the filter 'nfilter.noise'
+      if(noise < nfilter.noise){
+          stop(paste0("'noise' must be greater than or equal to ", nfilter.noise), call.=FALSE)
+      }
+      else
+      {
+          percentage <- noise
+      }
+	
+	
       # add noise to all components of survfit object	
-      survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = 0.01))
-      survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = 0.01))
-      survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = 0.01))
-      survfit_model_variable$lower   <- abs(stats::rnorm(n = length(survfit_model_variable$lower), mean = survfit_model_variable$lower, sd = 0.01))
-      survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = 0.01))
+      survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = percentage * survfit_model_variable$surv ))
+      survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = percentage * survfit_model_variable$n.event ))
+      survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = percentage * survfit_model_variable$n.risk ))
+      survfit_model_variable$lower   <- abs(stats::rnorm(n = length(survfit_model_variable$lower), mean = survfit_model_variable$lower, sd = percentage * survfit_model_variable$lower ))
+      survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = percentage * survfit_model_variable$upper ))
 	
       # TODO: modify conf.int	
+      # TODO: create a new object and return that; alternatively delete all other components of survfit object	
       
       return(survfit_model_variable)
 }
