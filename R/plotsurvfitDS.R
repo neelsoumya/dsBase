@@ -91,37 +91,49 @@ plotsurvfitDS<-function(formula = NULL,
       #    dsBase::setSeedDS(100)	
       # set.seed(100)	
       
-      # set study specific seed
-      seed <- getOption("datashield.seed")
-      if (is.null(seed))
-      {
-	      stop("plotsurvfitDS requires a seed to be set and requires 'datashield.seed' R option to operate", call.=FALSE)
-      }
+      # set method to probabilistic
+      # TODO: make arguments
+      method_anonymization = 2
+      noise = 0.26
 
-      # if there is a seed, then set it
-      set.seed(seed)	
+      # if probabilistic anonymization then generate and add noise	
+      if (method_anonymization == 2)
+      {	      
+	      
+	      # set study specific seed
+	      seed <- getOption("datashield.seed")
+	      if (is.null(seed))
+	      {
+		      stop("plotsurvfitDS requires a seed to be set and requires 'datashield.seed' R option to operate", call.=FALSE)
+	      }
 
-      # Check if the percentage of the variance that is specified in the argument 'noise'
-      # and is used as the variance of the embedded noise is a greater
-      # than the minimum threshold specified in the filter 'nfilter.noise'
-      noise = 0.26	
-      if(noise < nfilter.noise)
-      {
-          stop(paste0("'noise' must be greater than or equal to ", nfilter.noise), call.=FALSE)
+	      # if there is a seed, then set it
+	      set.seed(seed)	
+
+	      # Check if the percentage of the variance that is specified in the argument 'noise'
+	      # and is used as the variance of the embedded noise is a greater
+	      # than the minimum threshold specified in the filter 'nfilter.noise'
+
+	      if(noise < nfilter.noise)
+	      {
+		  stop(paste0("'noise' must be greater than or equal to ", nfilter.noise), call.=FALSE)
+	      }
+	      else
+	      {
+		  percentage <- noise
+	      }
+
+
+	      # add noise to all components of survfit object	
+	      survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = percentage * survfit_model_variable$surv ))
+	      survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = percentage * survfit_model_variable$n.event ))
+	      survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = percentage * survfit_model_variable$n.risk ))
+	      survfit_model_variable$lower   <- abs(stats::rnorm(n = length(survfit_model_variable$lower), mean = survfit_model_variable$lower, sd = percentage * survfit_model_variable$lower ))
+	      survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = percentage * survfit_model_variable$upper ))
+	
+      
       }
-      else
-      {
-          percentage <- noise
-      }
-	
-	
-      # add noise to all components of survfit object	
-      survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = percentage * survfit_model_variable$surv ))
-      survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = percentage * survfit_model_variable$n.event ))
-      survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = percentage * survfit_model_variable$n.risk ))
-      survfit_model_variable$lower   <- abs(stats::rnorm(n = length(survfit_model_variable$lower), mean = survfit_model_variable$lower, sd = percentage * survfit_model_variable$lower ))
-      survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = percentage * survfit_model_variable$upper ))
-	
+	      
       # TODO: modify conf.int	
       # TODO: create a new object and return that; alternatively delete all other components of survfit object	
       # return(list(x.new, y.new))
