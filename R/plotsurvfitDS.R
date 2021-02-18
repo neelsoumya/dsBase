@@ -132,6 +132,15 @@ plotsurvfitDS<-function(formula = NULL,
 	      survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = percentage * survfit_model_variable$upper ))
 	
       
+	      # create a new object
+	      survfit_model_variable_modified <- NULL
+	      survfit_model_variable_modified$surv <- survfit_model_variable$surv
+	      survfit_model_variable_modified$n.event <- survfit_model_variable$n.event
+	      survfit_model_variable_modified$n.risk <- survfit_model_variable$n.risk
+	      survfit_model_variable_modified$lower <- survfit_model_variable$lower
+	      survfit_model_variable_modified$upper <- survfit_model_variable$upper
+	      
+	      
       }
 	      
       # TODO: modify conf.int	
