@@ -148,6 +148,8 @@ plotsurvfitDS<-function(formula = NULL,
       # return(list(x.new, y.new))
 	
       return(survfit_model_variable)
+      # return(survfit_model_variable_modified)
+	
 }
 #AGGREGATE FUNCTION
 # plotsurvfitDS
