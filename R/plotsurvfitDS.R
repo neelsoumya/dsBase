@@ -148,8 +148,8 @@ plotsurvfitDS<-function(formula = NULL,
       # TODO: create a new object and return that; alternatively delete all other components of survfit object	
       # return(list(x.new, y.new))
 	
-      return(survfit_model_variable)
-      # return(survfit_model_variable_modified)
+      # return(survfit_model_variable)
+      return(survfit_model_variable_modified)
 	
 }
 #AGGREGATE FUNCTION
