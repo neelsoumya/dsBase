@@ -139,6 +139,7 @@ plotsurvfitDS<-function(formula = NULL,
 	      survfit_model_variable_modified$n.risk <- survfit_model_variable$n.risk
 	      survfit_model_variable_modified$lower <- survfit_model_variable$lower
 	      survfit_model_variable_modified$upper <- survfit_model_variable$upper
+	      survfit_model_variable_modified$conf.int <- survfit_model_variable$conf.int
 	      
 	      
       }
