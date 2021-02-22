@@ -94,7 +94,7 @@ plotsurvfitDS<-function(formula = NULL,
       # set method to probabilistic
       # TODO: make arguments
       method_anonymization = 2
-      noise = 0.26
+      noise = 0.03 # 0.26
 
       # if probabilistic anonymization then generate and add noise	
       if (method_anonymization == 2)
@@ -114,15 +114,16 @@ plotsurvfitDS<-function(formula = NULL,
 	      # and is used as the variance of the embedded noise is a greater
 	      # than the minimum threshold specified in the filter 'nfilter.noise'
 
-	      if(noise < nfilter.noise)
-	      {
-		  stop(paste0("'noise' must be greater than or equal to ", nfilter.noise), call.=FALSE)
-	      }
-	      else
-	      {
-		  percentage <- noise
-	      }
+	      # if(noise < nfilter.noise)
+	      # {
+	      #	  stop(paste0("'noise' must be greater than or equal to ", nfilter.noise), call.=FALSE)
+	      # }
+	      # else
+	      # {
+	      #	  percentage <- noise
+	      # }
 
+	      percentage <- noise
 
 	      # add noise to all components of survfit object	
 	      survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = percentage * survfit_model_variable$surv ))
