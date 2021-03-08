@@ -158,29 +158,3 @@ plotsurvfitDS<-function(formula = NULL,
 }
 #AGGREGATE FUNCTION
 # plotsurvfitDS
-
-      
-	      # create a new object
-	      survfit_model_variable_modified <- NULL
-	      survfit_model_variable_modified$surv <- survfit_model_variable$surv
-	      survfit_model_variable_modified$n.event <- survfit_model_variable$n.event
-	      survfit_model_variable_modified$n.risk <- survfit_model_variable$n.risk
-	      survfit_model_variable_modified$lower <- survfit_model_variable$lower
-	      survfit_model_variable_modified$upper <- survfit_model_variable$upper
-	      survfit_model_variable_modified$conf.int <- survfit_model_variable$conf.int
-	      survfit_model_variable_modified$time <- survfit_model_variable$time
-	      
-      }
-	      
-      # TODO: modify conf.int	
-      # TODO: create a new object and return that; alternatively delete all other components of survfit object	
-      # return(list(x.new, y.new))
-	
-      return(survfit_model_variable)
-      # return(survfit_model_variable_modified)
-      # TODO: error fix error in xy.coords(x, y, xlabel, ylabel, log)
-      # 	x is a list but does not have components x and y	
-	
-}
-#AGGREGATE FUNCTION
-# plotsurvfitDS
