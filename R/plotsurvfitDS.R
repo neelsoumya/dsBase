@@ -95,6 +95,12 @@ plotsurvfitDS<-function(formula = NULL,
       # TODO: make arguments
       method_anonymization = 2
       noise = 0.03 # 0.26
+	
+      # TODO: make monotonic
+      # TODO: determinsitic algorithm
+      # TODO: rgrenrate CIs based on noisy added data
+      # TODO: check for strata at least 10 in each
+      # TODO: combine across different studies (do this in ds.plotsurvfit last line combine OR not) 	
 
       # if probabilistic anonymization then generate and add noise	
       if (method_anonymization == 2)
