@@ -101,6 +101,7 @@ plotsurvfitDS<-function(formula = NULL,
       # TODO: rgrenrate CIs based on noisy added data
       # TODO: check for strata at least 10 in each
       # TODO: combine across different studies (do this in ds.plotsurvfit last line combine OR not) 	
+      # TODO: cloglog diagnostic plots	
 
       # if probabilistic anonymization then generate and add noise	
       if (method_anonymization == 2)
