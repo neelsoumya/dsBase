@@ -135,7 +135,7 @@ plotsurvfitDS<-function(formula = NULL,
 	      # for loop and only subtract to build a monotonically decreasing function 
 	      # add noise to all components of survfit object	
 	      
-	      for (i_temp_counter_inner in c(2:length(survfit_model_variable$surv))
+	      for ( i_temp_counter_inner in c(2:length(survfit_model_variable$surv)) )
 	      {
 		      # current value at this index
 		      value_temp <- survfit_model_variable$surv[i_temp_counter_inner]
