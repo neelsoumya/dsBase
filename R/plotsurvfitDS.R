@@ -131,6 +131,8 @@ plotsurvfitDS<-function(formula = NULL,
 
 	      percentage <- noise
 
+	      
+	      # for loop and only subtract to build a monotonically decreasing function 
 	      # add noise to all components of survfit object	
 	      survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = percentage * survfit_model_variable$surv ))
 	      survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = percentage * survfit_model_variable$n.event ))
@@ -139,8 +141,8 @@ plotsurvfitDS<-function(formula = NULL,
 	      survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = percentage * survfit_model_variable$upper ))
 	      # survfit_model_variable$conf.int <- abs(stats::rnorm(n = length(survfit_model_variable$conf.int), mean = survfit_model_variable$conf.int, sd = percentage * survfit_model_variable$conf.int ))
 	
+	      
 	      # TODO: create a Surv() server side object, add noise and then recalculate CIs
-      
 	      # create a new object
 	      survfit_model_variable_modified <- NULL
 	      survfit_model_variable_modified$surv <- survfit_model_variable$surv
