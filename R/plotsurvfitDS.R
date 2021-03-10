@@ -137,9 +137,18 @@ plotsurvfitDS<-function(formula = NULL,
 	      
 	      for (i_temp_counter_inner in c(2:length(survfit_model_variable$surv))
 	      {
-		      delta_noise <- abs(stats::rnorm(n = 1, mean = survfit_model_variable$surv[i_temp_counter_inner], sd = percentage * survfit_model_variable$surv[i_temp_counter_inner])
-		      survfit_model_variable$surv[i_temp_counter_inner] <- survfit_model_variable$surv[i_temp_counter_inner - 1] - delta_noise
+		      # current value at this index
+		      value_temp <- survfit_model_variable$surv[i_temp_counter_inner]
+		      # previous value
+		      prev_value_temp <- survfit_model_variable$surv[i_temp_counter_inner - 1]
+		      # add some noise 
+		      # delta_noise <- abs(stats::rnorm(n = 1, mean = value_temp, sd = percentage * value_temp))
+		      delta_noise <- abs(stats::rnorm(n = 1, mean = 0, sd = percentage))
+					 
+		      # SUBTRACT this noise from the PREVIOUS VALUE			 
+		      survfit_model_variable$surv[i_temp_counter_inner] <- prev_value_temp - delta_noise
 	      }	      
+		   
 	      # survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = percentage * survfit_model_variable$surv ))
 	      survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = percentage * survfit_model_variable$n.event ))
 	      survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = percentage * survfit_model_variable$n.risk ))
