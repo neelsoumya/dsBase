@@ -80,7 +80,6 @@ plotsurvfitDS<-function(formula = NULL,
       # get survfit model
       survfit_model_variable = eval(parse(text=formula), envir = parent.frame())
       
-      # TODO: modify by adding random noise to time, n.risk, n.event, conf.int, etc.
       # call plot.survival()
       # return that	
       # OR just return modified survfit object
