@@ -134,7 +134,13 @@ plotsurvfitDS<-function(formula = NULL,
 	      
 	      # for loop and only subtract to build a monotonically decreasing function 
 	      # add noise to all components of survfit object	
-	      survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = percentage * survfit_model_variable$surv ))
+	      
+	      for (i_temp_counter_inner in c(2:length(survfit_model_variable$surv))
+	      {
+		      delta_noise <- abs(stats::rnorm(n = 1, mean = survfit_model_variable$surv[i_temp_counter_inner], sd = percentage * survfit_model_variable$surv[i_temp_counter_inner])
+		      survfit_model_variable$surv[i_temp_counter_inner] <- survfit_model_variable$surv[i_temp_counter_inner - 1] - delta_noise
+	      }	      
+	      # survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = percentage * survfit_model_variable$surv ))
 	      survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = percentage * survfit_model_variable$n.event ))
 	      survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = percentage * survfit_model_variable$n.risk ))
 	      survfit_model_variable$lower   <- abs(stats::rnorm(n = length(survfit_model_variable$lower), mean = survfit_model_variable$lower, sd = percentage * survfit_model_variable$lower ))
