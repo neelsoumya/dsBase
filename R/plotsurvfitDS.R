@@ -140,6 +140,7 @@ plotsurvfitDS<-function(formula = NULL,
 	      survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = percentage * survfit_model_variable$upper ))
 	      # survfit_model_variable$conf.int <- abs(stats::rnorm(n = length(survfit_model_variable$conf.int), mean = survfit_model_variable$conf.int, sd = percentage * survfit_model_variable$conf.int ))
 	
+	      # TODO: create a Surv() server side object, add noise and then recalculate CIs
       
 	      # create a new object
 	      survfit_model_variable_modified <- NULL
@@ -153,7 +154,6 @@ plotsurvfitDS<-function(formula = NULL,
 	      
       }
 	      
-      # TODO: modify conf.int	
       # TODO: create a new object and return that; alternatively delete all other components of survfit object	
       # return(list(x.new, y.new))
 	
