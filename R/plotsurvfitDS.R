@@ -215,7 +215,8 @@ plotsurvfitDS<-function(formula = NULL,
 	      
 	      # survfit_model_variable$conf.int <- abs(stats::rnorm(n = length(survfit_model_variable$conf.int), mean = survfit_model_variable$conf.int, sd = percentage * survfit_model_variable$conf.int ))
 	      
-	      # TODO: survfit_model_variable$std.err
+	      # TODO: survfit_model_variable$std.err which will need to recomputed anyway from ds.Surv() or survival::Surv()
+	      # TODo: survfit_model_variable$n.risk which is 10000111110000 etc
 	      
 	      # TODO: create a Surv() server side object, add noise and then recalculate CIs
 	      #  do this for # survfit_model_variable$std.err
