@@ -93,7 +93,7 @@ plotsurvfitDS<-function(formula = NULL,
       # set method to probabilistic
       # TODO: make arguments
       method_anonymization = 2
-      noise = 0.03 # 0.26
+      noise = 0.003 # 0.03 0.26
 	
       # TODO: make monotonic
       # TODO: determinsitic algorithm
@@ -153,13 +153,16 @@ plotsurvfitDS<-function(formula = NULL,
 		   
 	      # survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = percentage * survfit_model_variable$surv ))
 	      
-	      # now do this for n.event
-	      for ( i_temp_counter_inner in c(2:length(survfit_model_variable$surv)) )
+	      # TODO: now do this for n.event	      
+	      survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = percentage * survfit_model_variable$n.event ))
+	      
+	      # do this for n.risk
+	      for ( i_temp_counter_inner in c(2:length(survfit_model_variable$n.risk)) )
 	      {
 		      # current value at this index
-		      value_temp <- survfit_model_variable$surv[i_temp_counter_inner]
+		      value_temp <- survfit_model_variable$n.risk[i_temp_counter_inner]
 		      # previous value
-		      prev_value_temp <- survfit_model_variable$surv[i_temp_counter_inner - 1]
+		      prev_value_temp <- survfit_model_variable$n.risk[i_temp_counter_inner - 1]
 		      
 		      # add some noise 
 		      # TODO: make noise a percentage of previous OR current value
@@ -167,11 +170,11 @@ plotsurvfitDS<-function(formula = NULL,
 		      delta_noise <- abs(stats::rnorm(n = 1, mean = 0, sd = percentage))
 					 
 		      # SUBTRACT this noise from the PREVIOUS VALUE			 
-		      survfit_model_variable$surv[i_temp_counter_inner] <- prev_value_temp - delta_noise
+		      survfit_model_variable$n.risk[i_temp_counter_inner] <- prev_value_temp - delta_noise
 	      }
 	      
-	      survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = percentage * survfit_model_variable$n.event ))
-	      survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = percentage * survfit_model_variable$n.risk ))
+	      # survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = percentage * survfit_model_variable$n.risk ))
+	      
 	      survfit_model_variable$lower   <- abs(stats::rnorm(n = length(survfit_model_variable$lower), mean = survfit_model_variable$lower, sd = percentage * survfit_model_variable$lower ))
 	      survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = percentage * survfit_model_variable$upper ))
 	      # survfit_model_variable$conf.int <- abs(stats::rnorm(n = length(survfit_model_variable$conf.int), mean = survfit_model_variable$conf.int, sd = percentage * survfit_model_variable$conf.int ))
