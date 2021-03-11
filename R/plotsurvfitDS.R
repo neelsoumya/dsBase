@@ -218,6 +218,8 @@ plotsurvfitDS<-function(formula = NULL,
 	      # TODO: survfit_model_variable$std.err which will need to recomputed anyway from ds.Surv() or survival::Surv()
 	      #   survival::Surv(time = rnd_time, time2 = rnd_time2, event = rnd_event)
 	      #	  from this Surv() object you can automatically get n.risk, etc. 	
+	      #      OR
+	      #   do this as part of ds.survfit() automatically add noise to Surv() object in ds.survfit()
 	      # TODO: survfit_model_variable$n.risk which is 10000111110000 etc
 	      
 	      # TODO: create a Surv() server side object, add noise and then recalculate CIs
