@@ -178,9 +178,10 @@ plotsurvfitDS<-function(formula = NULL,
 	      survfit_model_variable$lower   <- abs(stats::rnorm(n = length(survfit_model_variable$lower), mean = survfit_model_variable$lower, sd = percentage * survfit_model_variable$lower ))
 	      survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = percentage * survfit_model_variable$upper ))
 	      # survfit_model_variable$conf.int <- abs(stats::rnorm(n = length(survfit_model_variable$conf.int), mean = survfit_model_variable$conf.int, sd = percentage * survfit_model_variable$conf.int ))
-	
+	      # survfit_model_variable$std.err
 	      
 	      # TODO: create a Surv() server side object, add noise and then recalculate CIs
+	      #  do this for # survfit_model_variable$std.err
 	      # create a new object
 	      survfit_model_variable_modified <- NULL
 	      survfit_model_variable_modified$surv <- survfit_model_variable$surv
