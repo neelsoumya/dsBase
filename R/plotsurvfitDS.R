@@ -95,12 +95,12 @@ plotsurvfitDS<-function(formula = NULL,
       method_anonymization = 2
       noise = 0.003 # 0.03 0.26
 	
-      # TODO: make monotonic
-      # TODO: determinsitic algorithm
-      # TODO: rgrenrate CIs based on noisy added data
-      # TODO: check for strata at least 10 in each
-      # TODO: combine across different studies (do this in ds.plotsurvfit last line combine OR not) 	
-      # TODO: cloglog diagnostic plots	
+      # TODO: 1. make monotonic
+      # TODO: 2. determinsitic algorithm
+      # TODO: 3. regenerate CIs based on noisy added data (call ds.Surv or surv() with modified data and CIs will be automatically calculated)
+      # TODO: 4. check for strata at least 10 in each
+      # TODO: 5. combine across different studies (do this in ds.plotsurvfit last line combine OR not) 	
+      # TODO: 6. cloglog diagnostic plots	
 
       # if probabilistic anonymization then generate and add noise	
       if (method_anonymization == 2)
@@ -221,10 +221,11 @@ plotsurvfitDS<-function(formula = NULL,
 	      #      OR
 	      #   do this as part of ds.survfit() automatically add noise to Surv() object in ds.survfit()
 	      # TODO: survfit_model_variable$n.risk which is 10000111110000 etc
-	      
 	      # TODO: create a Surv() server side object, add noise and then recalculate CIs
 	      #  do this for # survfit_model_variable$std.err
-	      # create a new object
+	      
+	      
+	      # TODO: create a new object and return that
 	      survfit_model_variable_modified <- NULL
 	      survfit_model_variable_modified$surv <- survfit_model_variable$surv
 	      survfit_model_variable_modified$n.event <- survfit_model_variable$n.event
