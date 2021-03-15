@@ -216,21 +216,21 @@ plotsurvfitDS<-function(formula = NULL,
 	      # survfit_model_variable$conf.int <- abs(stats::rnorm(n = length(survfit_model_variable$conf.int), mean = survfit_model_variable$conf.int, sd = percentage * survfit_model_variable$conf.int ))
 	      
 	      # do this for std.err
-	      for ( i_temp_counter_inner in c(2:length(survfit_model_variable$std.err)) )
-	      {
-		      # current value at this index
-		      value_temp <- survfit_model_variable$std.err[i_temp_counter_inner]
-		      # previous value
-		      prev_value_temp <- survfit_model_variable$std.err[i_temp_counter_inner - 1]
+	      # for ( i_temp_counter_inner in c(2:length(survfit_model_variable$std.err)) )
+	      # {
+	      #	      # current value at this index
+	      # 	      value_temp <- survfit_model_variable$std.err[i_temp_counter_inner]
+	      #	      # previous value
+	      #	      prev_value_temp <- survfit_model_variable$std.err[i_temp_counter_inner - 1]
 		      
 		      # add some noise 
 		      # TODO: make noise a percentage of previous OR current value
 		      # delta_noise <- abs(stats::rnorm(n = 1, mean = value_temp, sd = percentage * value_temp))
-		      delta_noise <- abs(stats::rnorm(n = 1, mean = 0, sd = percentage))
+	      #	      delta_noise <- abs(stats::rnorm(n = 1, mean = 0, sd = percentage))
 					 
 		      # SUBTRACT this noise from the PREVIOUS VALUE			 
-		      survfit_model_variable$std.err[i_temp_counter_inner] <- prev_value_temp - delta_noise
-	      }
+	      # 	      survfit_model_variable$std.err[i_temp_counter_inner] <- prev_value_temp - delta_noise
+	      # }
 	      
 	      # TODO: survfit_model_variable$std.err which will need to recomputed anyway from ds.Surv() or survival::Surv()
 	      #   survival::Surv(time = rnd_time, time2 = rnd_time2, event = rnd_event)
