@@ -93,7 +93,7 @@ plotsurvfitDS<-function(formula = NULL,
       # set method to probabilistic
       # TODO: make arguments
       method_anonymization = 2
-      noise = 0.003 # 0.03 0.26
+      noise = 0.0003 # 0.03 0.26
 	
       # TODO: 1. make monotonic
       # TODO: 2. determinsitic algorithm
