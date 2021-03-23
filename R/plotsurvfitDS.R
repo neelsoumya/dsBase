@@ -93,7 +93,7 @@ plotsurvfitDS<-function(formula = NULL,
       # set method to probabilistic
       # TODO: make arguments
       method_anonymization = 2
-      noise = 0.0003 # 0.03 0.26
+      noise = 0.03 # 0.0003 # 0.03 0.26
 	
       # TODO: 1. make monotonic
       # TODO: 2. determinsitic algorithm
@@ -135,81 +135,81 @@ plotsurvfitDS<-function(formula = NULL,
 	      # for loop and only subtract to build a monotonically decreasing function 
 	      # add noise to all components of survfit object	
 	      # NOTE: start from 2nd index
-	      for ( i_temp_counter_inner in c(2:length(survfit_model_variable$surv)) )
-	      {
+	      # for ( i_temp_counter_inner in c(2:length(survfit_model_variable$surv)) )
+	      # {
 		      # current value at this index
-		      value_temp <- survfit_model_variable$surv[i_temp_counter_inner]
+	      #	      value_temp <- survfit_model_variable$surv[i_temp_counter_inner]
 		      # previous value
-		      prev_value_temp <- survfit_model_variable$surv[i_temp_counter_inner - 1]
+	      #	      prev_value_temp <- survfit_model_variable$surv[i_temp_counter_inner - 1]
 		      
 		      # add some noise 
 		      # TODO: make noise a percentage of previous OR current value
 		      # delta_noise <- abs(stats::rnorm(n = 1, mean = value_temp, sd = percentage * value_temp))
-		      delta_noise <- abs(stats::rnorm(n = 1, mean = 0, sd = percentage))
+	      #	      delta_noise <- abs(stats::rnorm(n = 1, mean = 0, sd = percentage))
 					 
 		      # SUBTRACT this noise from the PREVIOUS VALUE			 
-		      survfit_model_variable$surv[i_temp_counter_inner] <- prev_value_temp - delta_noise
-	      }	      
+	      # 	      survfit_model_variable$surv[i_temp_counter_inner] <- prev_value_temp - delta_noise
+	      # }	      
 		   
 	      # survfit_model_variable$surv    <- abs(stats::rnorm(n = length(survfit_model_variable$surv), mean = survfit_model_variable$surv, sd = percentage * survfit_model_variable$surv ))
 	      
 	      # TODO: now do this for n.event	      
-	      survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = percentage * survfit_model_variable$n.event ))
+	      # survfit_model_variable$n.event <- abs(stats::rnorm(n = length(survfit_model_variable$n.event), mean = survfit_model_variable$n.event, sd = percentage * survfit_model_variable$n.event ))
 	      
 	      # do this for n.risk
-	      for ( i_temp_counter_inner in c(2:length(survfit_model_variable$n.risk)) )
-	      {
+	      # for ( i_temp_counter_inner in c(2:length(survfit_model_variable$n.risk)) )
+	      # {
 		      # current value at this index
-		      value_temp <- survfit_model_variable$n.risk[i_temp_counter_inner]
+	      #	      value_temp <- survfit_model_variable$n.risk[i_temp_counter_inner]
 		      # previous value
-		      prev_value_temp <- survfit_model_variable$n.risk[i_temp_counter_inner - 1]
+	      #	      prev_value_temp <- survfit_model_variable$n.risk[i_temp_counter_inner - 1]
 		      
 		      # add some noise 
 		      # TODO: make noise a percentage of previous OR current value
 		      # delta_noise <- abs(stats::rnorm(n = 1, mean = value_temp, sd = percentage * value_temp))
-		      delta_noise <- abs(stats::rnorm(n = 1, mean = 0, sd = percentage))
+	      #	      delta_noise <- abs(stats::rnorm(n = 1, mean = 0, sd = percentage))
 					 
 		      # SUBTRACT this noise from the PREVIOUS VALUE			 
-		      survfit_model_variable$n.risk[i_temp_counter_inner] <- prev_value_temp - delta_noise
-	      }
+	      #	      survfit_model_variable$n.risk[i_temp_counter_inner] <- prev_value_temp - delta_noise
+	      # }
 	      
 	      # survfit_model_variable$n.risk  <- abs(stats::rnorm(n = length(survfit_model_variable$n.risk), mean = survfit_model_variable$n.risk, sd = percentage * survfit_model_variable$n.risk ))
 	      
 	      # do this for lower
-	      for ( i_temp_counter_inner in c(2:length(survfit_model_variable$lower)) )
-	      {
+	      # for ( i_temp_counter_inner in c(2:length(survfit_model_variable$lower)) )
+	      # {
 		      # current value at this index
-		      value_temp <- survfit_model_variable$lower[i_temp_counter_inner]
+	      #	      value_temp <- survfit_model_variable$lower[i_temp_counter_inner]
 		      # previous value
-		      prev_value_temp <- survfit_model_variable$lower[i_temp_counter_inner - 1]
+	      #	      prev_value_temp <- survfit_model_variable$lower[i_temp_counter_inner - 1]
 		      
 		      # add some noise 
 		      # TODO: make noise a percentage of previous OR current value
 		      # delta_noise <- abs(stats::rnorm(n = 1, mean = value_temp, sd = percentage * value_temp))
-		      delta_noise <- abs(stats::rnorm(n = 1, mean = 0, sd = percentage))
+	      #	      delta_noise <- abs(stats::rnorm(n = 1, mean = 0, sd = percentage))
 					 
 		      # SUBTRACT this noise from the PREVIOUS VALUE			 
-		      survfit_model_variable$lower[i_temp_counter_inner] <- prev_value_temp - delta_noise
-	      }
+	      #	      survfit_model_variable$lower[i_temp_counter_inner] <- prev_value_temp - delta_noise
+	      # }
 	      
 	      # survfit_model_variable$lower   <- abs(stats::rnorm(n = length(survfit_model_variable$lower), mean = survfit_model_variable$lower, sd = percentage * survfit_model_variable$lower ))
 	      
 	      # do this for upper
-	      for ( i_temp_counter_inner in c(2:length(survfit_model_variable$upper)) )
-	      {
+	      # for ( i_temp_counter_inner in c(2:length(survfit_model_variable$upper)) )
+	      # {
 		      # current value at this index
-		      value_temp <- survfit_model_variable$upper[i_temp_counter_inner]
+	      #	      value_temp <- survfit_model_variable$upper[i_temp_counter_inner]
 		      # previous value
-		      prev_value_temp <- survfit_model_variable$upper[i_temp_counter_inner - 1]
+	      #	      prev_value_temp <- survfit_model_variable$upper[i_temp_counter_inner - 1]
 		      
 		      # add some noise 
 		      # TODO: make noise a percentage of previous OR current value
 		      # delta_noise <- abs(stats::rnorm(n = 1, mean = value_temp, sd = percentage * value_temp))
-		      delta_noise <- abs(stats::rnorm(n = 1, mean = 0, sd = percentage))
+	      #	      delta_noise <- abs(stats::rnorm(n = 1, mean = 0, sd = percentage))
 					 
 		      # SUBTRACT this noise from the PREVIOUS VALUE			 
-		      survfit_model_variable$upper[i_temp_counter_inner] <- prev_value_temp - delta_noise
-	      }
+	      # 	      survfit_model_variable$upper[i_temp_counter_inner] <- prev_value_temp - delta_noise
+	      # }
 	      
 	      # survfit_model_variable$upper   <- abs(stats::rnorm(n = length(survfit_model_variable$upper), mean = survfit_model_variable$upper, sd = percentage * survfit_model_variable$upper ))
 	      
@@ -241,6 +241,61 @@ plotsurvfitDS<-function(formula = NULL,
 	      # TODO: create a Surv() server side object, add noise and then recalculate CIs
 	      #  do this for # survfit_model_variable$std.err
 	      
+	      
+
+		##########################################
+		# Approach 1: add noise before plotting
+		#
+		# add noise to:
+		# surv (i.e. proportion surviving)
+		# time (times at which events occur, ie when the proportion changes)
+		# this is for the y axis
+		# and for time on x axis
+		##########################################
+		for ( i_temp_counter_inner in c(2:length(survfit_model_variable$surv)) )
+		{
+			  # current value, upper, lower at this index
+			  value_temp <- survfit_model_variable$surv[i_temp_counter_inner]
+			  upper_temp <- survfit_model_variable$upper[i_temp_counter_inner]
+			  lower_temp <- survfit_model_variable$lower[i_temp_counter_inner]
+
+			  # previous value, upper, lower
+			  prev_value_temp <- survfit_model_variable$surv[i_temp_counter_inner - 1]
+			  prev_upper_temp <- survfit_model_variable$upper[i_temp_counter_inner - 1]
+			  prev_lower_temp <- survfit_model_variable$lower[i_temp_counter_inner - 1]
+
+			  # add some noise 
+			  # TODO: make noise a percentage of previous OR current value
+			  # delta_noise <- abs(stats::rnorm(n = 1, mean = value_temp, sd = percentage * value_temp))
+			  delta_noise <- stats::rnorm(n = 1, mean = 0, sd = percentage)
+
+			  # SUBTRACT this noise from the PREVIOUS VALUE if it does not cause problems with monotonicity
+
+			  value_noise = value_temp - delta_noise
+			  upper_noise = upper_temp - delta_noise
+			  lower_noise = lower_temp - delta_noise
+
+			  if (prev_value_temp >= value_noise)
+			  {
+			    survfit_model_variable$surv[i_temp_counter_inner] <- value_noise
+			    survfit_model_variable$upper[i_temp_counter_inner] <- upper_noise
+			    survfit_model_variable$lower[i_temp_counter_inner] <- lower_noise
+			  }
+			  else
+			  {
+			    survfit_model_variable$surv[i_temp_counter_inner] = prev_value_temp
+			    survfit_model_variable$upper[i_temp_counter_inner] = prev_upper_temp
+			    survfit_model_variable$lower[i_temp_counter_inner] = prev_lower_temp
+			  }
+
+			  # survfit_model_variable$mono[i_temp_counter_inner] = prev_value_temp - survfit_model_variable$surv[i_temp_counter_inner]
+
+		  	  # new noise for x axis
+		  	  # needs more work, also monotonic
+		  	  delta_noise <- stats::rnorm(n = 1, mean = 0, sd = percentage)
+		  	  survfit_model_variable$time[i_temp_counter_inner] <- survfit_model_variable$time[i_temp_counter_inner] - delta_noise
+
+		}
 	      
 	      # TODO: create a new object and return that
 	      survfit_model_variable_modified <- NULL
