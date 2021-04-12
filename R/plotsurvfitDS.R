@@ -24,7 +24,7 @@
 #' @param control object of type survival::coxph.control() specifying iteration limit and other
 #'        control options. Default is survival::coxph.control()
 #' @return a summary of the Cox proportional hazards from the server side environment from the server side environment.
-#' @author Soumya Banerjee and Tom Bishop (2020).
+#' @author Soumya Banerjee, Tom Bishop, Demetris Avraam, Paul Burton and DataSHIELD technical team (2021).
 #' @export
 plotsurvfitDS<-function(formula = NULL,
                       dataName = NULL,
